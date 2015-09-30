@@ -1,6 +1,3 @@
-hash git >/dev/null && /usr/bin/env git clone https://github.com/oelizondo/Sofia.git ~/.sofia || {
-  echo "git not installed"
-  exit
-}
+git clone https://github.com/oelizondo/Sofia.git ~/.sofia
 cp ~/.sofia/sofia /usr/local/bin/
 echo 'Sofia is installed! <3'
