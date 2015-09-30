@@ -98,7 +98,7 @@ echo "Creating $1..."
     echo 'hould Sofia install: ' $package
     read install_option
     if [ "$install_option" == 'y' ]; then
-      npm install --save-dev $package
+      sudo npm install --save-dev $package
     fi
   done
 
