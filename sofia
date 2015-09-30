@@ -106,7 +106,17 @@ echo "Creating $1..."
   echo 'Sofia is done! Just run gulp to start working!'
 
 else
-  echo 'Node is not normally where it should be, do you have Node.js installed?'
-  echo 'Bye!'
+  echo 'Node is not normally where it should be, should we install Node.js (y/n)?'
+  read yon
+  if [ "$yon" == 'y']; then
+    cd
+    git clone git://github.com/ry/node.git
+    cd node
+    ./configure
+    make
+    sudo make install
+  fi
+  echo 'All set. You can now use Sofia.'
+  echo 'Bye <3'
   exit
 fi
