@@ -34,8 +34,9 @@ function angular_template {
 }
 
 echo 'Welcome to Sofia!'
-
-if [ -f /usr/local/bin/node ]; then
+bower=$(which bower)
+node=$(which node)
+if [ ! -z $node ]; then
 
   mkdir $1
 
@@ -43,7 +44,7 @@ if [ -f /usr/local/bin/node ]; then
 
 # Installs dependencies
 
-  if [ -f /usr/local/bin/bower ]; then
+  if [ ! -z $bower ]; then
     echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton and jQuery...'
     install_bower $2
   else
@@ -108,15 +109,15 @@ echo "Creating $1..."
 else
   echo 'Node is not normally where it should be, should we install Node.js (y/n)?'
   read yon
-  if [ "$yon" == 'y']; then
+  if [ "$yon" == 'y' ]; then
     cd
     git clone git://github.com/ry/node.git
     cd node
     ./configure
     make
     sudo make install
+    echo 'All set. You can now use Sofia.'
   fi
-  echo 'All set. You can now use Sofia.'
   echo 'Bye <3'
   exit
 fi
