@@ -58,7 +58,7 @@ if [ -f /usr/local/bin/node ]; then
 # Starts project scaffold
 echo "Creating $1..."
 
-  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/377f7b88326afcf1fe644fc2767b1495314f2c11/index.html -o index.html
+  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/4849156f33794985ef6310191403357f4a578659/index.html -o index.html
 
   curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/6a1fcc129d8e701f8174083f043b96d5c7fe6935/gulpfile.js -o gulpfile.js
 
@@ -72,7 +72,7 @@ echo "Creating $1..."
 
   cd css
 
-  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/765890f336763c285921756a99cfffe03724166b/style.scss -o style.scss
+  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/ddbdd09081bb1a3ee567257fe5cf6537ef7bf6d7/style.scss -o style.scss
 
   touch _variables.scss
 
