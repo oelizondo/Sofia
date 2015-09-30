@@ -83,6 +83,7 @@ echo "Creating $1..."
   angular_template $2
 
   gulppackages=(
+    gulp-live-server
     gulp-sass
     gulp-plumber
     gulp-watch
@@ -91,11 +92,10 @@ echo "Creating $1..."
 
   echo 'Installing gulp packages...'
   sudo npm install --save-dev gulp
-  npm install gulp-live-server
 
   for package in "${gulppackages[@]}"
   do
-    echo 'hould Sofia install: ' $package
+    echo 'hould Sofia install: (y/n)' $package
     read install_option
     if [ "$install_option" == 'y' ]; then
       sudo npm install --save-dev $package

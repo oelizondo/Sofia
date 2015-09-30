@@ -11,7 +11,7 @@ curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ###How to use
 To start a new project, just do:
 ```console
-Sofia myProject
+sofia myProject
 ```
 And that's it! Sofia will take it from there.
 
