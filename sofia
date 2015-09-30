@@ -82,6 +82,18 @@ echo "Creating $1..."
 
   angular_template $2
 
+  echo 'Installing gulp packages...'
+
+  npm install --save-dev gulp
+
+  npm install --save-dev gulp-sass
+
+  npm install --save-dev gulp-plumber
+
+  npm install -save-dev gulp-watch
+
+  npm install -save-dev gulp-coffee
+
   echo 'Sofia is done! Just run gulp and start up your local server to start working!'
 
 else
