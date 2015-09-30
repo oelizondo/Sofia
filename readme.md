@@ -4,13 +4,13 @@ The perfect project scaffolder for your awesome projects. Sofia creates a agnost
 ###Installation
 To use Sofia, you need to have Node.js installed. If you do, then you don't have anything to worry about. If you don't, go ahead and install Node ^_^
 To install:
-```
+```console
 curl -L https://github.com/oelizondo/Sofia/blob/master/install.sh | sh
 ```
 
 ###How to use
 To start a new project, just do:
-```
+```console
 Sofia myProject
 ```
 And that's it! Sofia will take it from there.
@@ -22,11 +22,11 @@ If you pass ```angular``` as the second paramter, Sofia creates the necessary fo
 ###Bower
 Sofia comes with Bower, if you already have it installed, then there is nothing to worry about. If you don't have Bower you'll be prompted to install it. Bower install jQuery and Skeleton by default, but you can remove them via:
 
-```
+```console
 bower uninstall skeleton-css && bower uninstall jQuery
 ```
 Naturally, you can install other packages via:
-```
+```console
 bower install <package>
 ```
 
