@@ -1,11 +1,33 @@
 #!/bin/bash
 
+function install_bower {
+  bower install skeleton-css
+  bower install jQuery
+  if [ $2 == 'angular' ]; then
+    bower install angular
+    bower install angular-route
+  fi
+}
+
+function angular_template {
+  cd js
+
+  if [ $2 == 'angular' ]; then
+    mkdir controllers routes
+    curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/c28ce92f142162647952c1feace3579d91d27d4b/app.coffee -O app.coffee
+    cd routes
+    curl https://gist.githubusercontent.com/oelizondo/dc60cbd21d4530f24424/raw/8018340a8906064d71537f4eb85c7638153342c1/routes.coffee -O routes.coffee
+    cd ..
+  else
+    curl https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -O main.coffee
+  fi
+
+  cd ..
+}
+
 echo 'Welcome to Sofia!'
-echo 'Do you have Node.js installed? (y/n)'
 
-read answer
-
-if [ $answer == 'y' ]; then
+if [ -f /usr/local/bin/node ]; then
 
   mkdir $1
 
@@ -13,30 +35,24 @@ if [ $answer == 'y' ]; then
 
 # Installs dependencies
 
-  echo 'Awesome! Do you have Bower installed? (y/n)'
-
-  read answertwo
-
-  if [ $answertwo == 'n' ]; then
-    echo 'Installing bower'
-    sudo npm install --g bower
-  fi
-
-  echo 'Bower has been included so you can add your personal dependencies. Sofia comes with skeleton and jQuery by default, would you like to include them? (y/n)'
-
-  read answerthree
-
-  if [ $answerthree == 'y' ]; then
-    bower install skeleton
-    bower install jQuery
+  if [ -f /usr/local/bin/bower ]; then
+    echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton and jQuery.'
+    #install_bower $2
+  else
+    echo 'Do you want Sofia to install bower?'
+    read answertwo
+    if [ $answertwo == 'y' ]; then
+      echo 'Installing bower'
+      sudo npm install --g bower
+    fi
   fi
 
 # Starts project scaffold
 echo "Creating $1..."
 
-  curl -L https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/7524d617cfb8529b2b367fde28bc4e2b36e629ba/index.html -O index.html
+  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/7524d617cfb8529b2b367fde28bc4e2b36e629ba/index.html -O index.html
 
-  curl -L https://raw.githubusercontent.com/oelizondo/mtg/master/gulpfile.js -O gulpfile.js
+  curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/83da7807fe5ed45876bbe3535d3256ac6be5b45c/gulpfile.js -O gulpfile.js
 
   mkdir assets js css
 
@@ -48,7 +64,7 @@ echo "Creating $1..."
 
   cd css
 
-  curl -L https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/4f6e6295cff96aa7b57b9491d95a8e3750f519c6/style.scss -O style.scss
+  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/4f6e6295cff96aa7b57b9491d95a8e3750f519c6/style.scss -O style.scss
 
   touch _variables.scss
 
@@ -56,20 +72,12 @@ echo "Creating $1..."
 
   cd ..
 
-  cd js
-
-  curl -L https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -O main.coffee
-
-  cd ..
-
-  echo 'Installing your gulp packages...'
-
-  npm install
+  angular_template $2
 
   echo 'Sofia is done! Just run gulp and start up your local server to start working!'
 
 else
-  echo 'You need Node.js installed :('
+  echo 'Node is not normally where it should be, do you have Node.js installed?'
   echo 'Bye!'
   exit
 fi
