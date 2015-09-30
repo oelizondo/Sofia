@@ -1,4 +1,3 @@
 git clone https://github.com/oelizondo/Sofia.git ~/.sofia
-cp ~/.sofia/sofia /usr/local/bin/
-~/.sofia/sofia
+echo 'export PATH="$HOME/.sofia:$PATH"' >> ~/.zshrc
 echo 'Sofia is installed! <3'
