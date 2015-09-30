@@ -5,7 +5,7 @@ The perfect project scaffolder for your awesome projects. Sofia creates a agnost
 To use Sofia, you need to have Node.js installed. If you do, then you don't have anything to worry about. If you don't, go ahead and install Node ^_^
 To install:
 ```console
-curl -L https://github.com/oelizondo/Sofia/blob/master/install.sh | sh
+curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ```
 
 ###How to use
