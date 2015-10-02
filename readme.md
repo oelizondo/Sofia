@@ -18,7 +18,7 @@ And that's it! Sofia will take it from there.
 
 ###Angular
 
-If you pass ```angular``` as the second paramter, Sofia creates the necessary folders and installs Angular and angular-route via Bower. If you don't like this approach, no worries, uninstalling and installing different packages comes in the next section.
+If you pass ```angular``` as the second parameter, Sofia creates the necessary folders and installs Angular and angular-route via Bower. If you don't like this approach, no worries, uninstalling and installing different packages comes in the next section.
 
 ###Bower
 Sofia comes with [Bower](http://bower.io/), if you already have it installed, then there is nothing to worry about. If you don't have Bower you'll be prompted to install it. Bower installs jQuery and Skeleton by default, but you can remove them via:
