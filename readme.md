@@ -2,7 +2,7 @@
 The perfect project scaffolder for your awesome projects. Sofia creates an agnostic static site structure that lets you start developing right away. Forget about the tedious setup!
 
 ###Installation
-To use Sofia, you need to have Node.js installed. If you do, then you don't have anything to worry about a thing. If you don't, go ahead and install Node.
+To use Sofia, you need to have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install Node.
 To install:
 ```console
 curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
@@ -32,6 +32,7 @@ bower install <package>
 
 ###Gulp
 The Designated task runner for Sofia is [Gulp](http://gulpjs.com/). It's amazingly easy to set up and will get you started in a fly. You don't have to worry about a thing, we'll take it from here and make sure you have Gulp and start working right away!
+If you don't use Gulp as your task runner, simply tell Sofia you don't want it at the installation setup :3
 
 ##Contributing
 1. Fork!
