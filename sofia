@@ -2,7 +2,7 @@
 
 function install_bower {
   bower install skeleton-css
-  bower install jQuery
+  bower install jquery
   if [ "$2" == 'angular' ]; then
     bower install angular
     bower install angular-route
@@ -38,7 +38,9 @@ bower=$(which bower)
 
 node=$(which node)
 
-if [ ! -z $node ]; then
+nodejs=$(which nodejs)
+
+if [ ! -z $nodejs ] || [ ! -z $node ]; then
 
   mkdir $1
 
