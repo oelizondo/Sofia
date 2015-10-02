@@ -63,7 +63,7 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 # Starts project scaffold
 echo "Creating $1..."
 
-  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/4849156f33794985ef6310191403357f4a578659/index.html -o index.html
+  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/710e12d68e8e90a1597dc490a7d023ca9c418cd9/index.html -o index.html
 
   curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/6a1fcc129d8e701f8174083f043b96d5c7fe6935/gulpfile.js -o gulpfile.js
 
