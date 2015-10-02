@@ -1,4 +1,4 @@
-![Sofia]((https://raw.githubusercontent.com/oelizondo/Sofia/master/Logo.png)
+![Sofia](https://raw.githubusercontent.com/oelizondo/Sofia/master/Logo.png)
 ##Welcome to Sofia <3
 The perfect project scaffolder for your awesome projects. Sofia creates an agnostic static site structure that lets you start developing right away. Forget about the tedious setup!
 
