@@ -13,19 +13,24 @@ function angular_template {
   cd js
 
   if [ "$1" == 'angular' ]; then
-    mkdir controllers routes
-    cd routes
-    curl https://gist.githubusercontent.com/oelizondo/dc60cbd21d4530f24424/raw/8018340a8906064d71537f4eb85c7638153342c1/routes.coffee -o routes.coffee
+    mkdir controllers routes directives
+
     cd ..
-    cd ..
-    
+
     mkdir build
 
     cd build
 
-    curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/def664adfd25318ecfc691a0bf2dcd7e68190623/app.js -o main.js
+    curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/fc22382a656a13b495a152b2e9c10db6a074397a/app.js -o app.js
 
     cd ..
+
+    mkdir views
+
+    rm index.html
+
+    curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/51a714d9c75ab691a42931568cd67f16de517385/index.html -o index.html 
+
   else
     curl https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -o main.coffee
   fi
@@ -51,7 +56,7 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 
   if [ ! -z $bower ]; then
     echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton and jQuery...'
-    install_bower $2
+    #install_bower $2
   else
     echo 'Do you want Sofia to install bower?'
     read answertwo
@@ -78,7 +83,7 @@ echo "Creating $1..."
 
   cd css
 
-  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/71263a7fd3b2c135434a112495bcef02b596d1ef/style.scss -o style.scss
+  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/0e98b42c858532862ecf2c8e6ab8380a57f90f39/style.scss -o style.scss
 
   touch _variables.scss
 
@@ -102,10 +107,12 @@ echo "Creating $1..."
   for package in "${gulppackages[@]}"
   do
     echo 'Should Sofia install: (y/n)' $package
-     read install_option
-     if [ "$install_option" == 'y' ]; then
+    read install_option
+    if [ "$install_option" == 'y' ]; then
       sudo npm install --save-dev $package
-     fi
+    elif [ "$package" == 'gulp' ]; then
+      break
+    fi
   done
 
   echo 'Sofia is done! Just run gulp to start working! <3'
