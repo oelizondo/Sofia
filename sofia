@@ -56,7 +56,7 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 
   if [ ! -z $bower ]; then
     echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton and jQuery...'
-    #install_bower $2
+    install_bower $2
   else
     echo 'Do you want Sofia to install bower?'
     read answertwo
