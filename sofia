@@ -3,7 +3,7 @@
 function install_bower {
   bower install skeleton-css
   bower install jquery
-  if [ "$2" == 'angular' ]; then
+  if [ "$1" == 'angular' ]; then
     bower install angular
     bower install angular-route
   fi
@@ -12,12 +12,13 @@ function install_bower {
 function angular_template {
   cd js
 
-  if [ "$2" == 'angular' ]; then
+  if [ "$1" == 'angular' ]; then
     mkdir controllers routes
     cd routes
     curl https://gist.githubusercontent.com/oelizondo/dc60cbd21d4530f24424/raw/8018340a8906064d71537f4eb85c7638153342c1/routes.coffee -o routes.coffee
     cd ..
-
+    cd ..
+    
     mkdir build
 
     cd build
@@ -101,10 +102,10 @@ echo "Creating $1..."
   for package in "${gulppackages[@]}"
   do
     echo 'Should Sofia install: (y/n)' $package
-    read install_option
-    if [ "$install_option" == 'y' ]; then
+     read install_option
+     if [ "$install_option" == 'y' ]; then
       sudo npm install --save-dev $package
-    fi
+     fi
   done
 
   echo 'Sofia is done! Just run gulp to start working! <3'
