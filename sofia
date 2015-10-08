@@ -46,6 +46,10 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 
   cd $1
 
+  echo 'Adding gitignore...'
+
+  curl https://gist.githubusercontent.com/octocat/9257657/raw/3f9569e65df83a7b328b39a091f0ce9c6efc6429/.gitignore -o .gitignore
+
 # Installs dependencies
 
   if [ ! -z $bower ]; then
@@ -106,6 +110,14 @@ echo "Creating $1..."
       sudo npm install --save-dev $package
     fi
   done
+
+  git init
+
+  git add -A
+
+  git commit -m "Initial commit, installs dependencies"
+
+  echo 'Initial push is pending.'
 
   echo 'Sofia is done! Just run gulp to start working! <3'
 
