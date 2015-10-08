@@ -4,7 +4,8 @@ The perfect project scaffolder for your awesome projects. Sofia creates an agnos
 
 ###Installation
 To use Sofia, you need to have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install Node.
-To install:
+
+To install Sofia:
 ```console
 curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ```
