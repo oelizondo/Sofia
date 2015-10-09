@@ -29,12 +29,14 @@ function angular_template {
 
     rm index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/51a714d9c75ab691a42931568cd67f16de517385/index.html -o index.html 
+    curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/51a714d9c75ab691a42931568cd67f16de517385/index.html -o index.html
 
   else
     curl https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -o main.coffee
   fi
-  
+
+  c..
+
 }
 
 echo 'Welcome to Sofia!'
