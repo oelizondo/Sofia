@@ -3,6 +3,7 @@
 The perfect project scaffolder for your awesome projects. Sofia creates an agnostic static site structure that lets you start developing right away. Forget about the tedious setup!
 
 ###Installation
+Make sure you have Git installed.
 To use Sofia, you need to have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install Node.
 
 To install Sofia:
