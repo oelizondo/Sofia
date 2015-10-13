@@ -2,11 +2,6 @@
 
 function install_bower {
   bower install skeleton-css
-  bower install jquery
-  if [ "$1" == 'angular' ]; then
-    bower install angular
-    bower install angular-route
-  fi
 }
 
 function angular_template {
@@ -21,7 +16,13 @@ function angular_template {
 
     cd build
 
-    curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/fc22382a656a13b495a152b2e9c10db6a074397a/app.js -o app.js
+    mkdir js
+
+    cd js
+
+    curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/9d38633d188f3fc18080bdb9ef096e21e8060284/app.js -o app.js
+
+    cd ..
 
     cd ..
 
@@ -29,13 +30,13 @@ function angular_template {
 
     rm index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/51a714d9c75ab691a42931568cd67f16de517385/index.html -o index.html
+    curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/5d6c11e6a06dbd33a383f9bee1eb19e8c22d697f/index.html -o index.html
 
   else
     curl https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -o main.coffee
   fi
 
-  c..
+  cd..
 
 }
 
@@ -74,7 +75,7 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 # Starts project scaffold
 echo "Creating $1..."
 
-  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/710e12d68e8e90a1597dc490a7d023ca9c418cd9/index.html -o index.html
+  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/d360038ed066f4d6678570b40ef869d9b42d538e/index.html -o index.html
 
   curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/6a1fcc129d8e701f8174083f043b96d5c7fe6935/gulpfile.js -o gulpfile.js
 
