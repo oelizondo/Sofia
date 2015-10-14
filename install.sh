@@ -4,6 +4,7 @@ sofia=$(echo $PATH | grep sofia)
 
 if [ -z $sofia ]; then
     echo 'Adding Sofia to your path...'
+    echo 'export PATH="$HOME/.sofia:$PATH"' >> ~/.bash_profile
     echo 'export PATH="$HOME/.sofia:$PATH"' >> ~/.bashrc
     echo 'export PATH="$HOME/.sofia:$PATH"' >> ~/.zshrc
 fi
