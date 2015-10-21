@@ -36,11 +36,11 @@ function angular_template {
     curl https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -o main.coffee
   fi
 
-  cd..
+  cd ..
 
 }
 
-echo 'Welcome to Sofia!'
+echo 'Welcome to Sofia'
 
 bower=$(which bower)
 
@@ -61,7 +61,7 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 # Installs dependencies
 
   if [ ! -z $bower ]; then
-    echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton and jQuery...'
+    echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton.'
     install_bower $2
   else
     echo 'Do you want Sofia to install bower?'
@@ -127,12 +127,13 @@ echo "Creating $1..."
 
   git commit -m "Initial commit, installs dependencies"
 
+  git checkout -b dev
+
   echo 'Initial push is pending.'
 
-  echo 'Sofia is done! Just run gulp to start working! <3'
+  echo 'Sofia is done! Cd into and run gulp to start working! <3'
 
 else
   echo 'Node is not here, go ahead and install it to use Sofia.'
   echo 'Bye <3'
-  exit
 fi
