@@ -1,10 +1,10 @@
 ![Sofia](https://raw.githubusercontent.com/oelizondo/Sofia/master/Logo.png)
 ##Welcome to Sofia <3
-The perfect project scaffolder for your awesome projects. Sofia creates an agnostic static site structure that lets you start developing right away. Forget about the tedious setup!
+The perfect project scaffolder for your awesome projects. Sofia creates an agnostic static site structure that let's you start developing right away. Forget about the tedious setup!
 
 ###Installation
 Make sure you have Git installed.
-To use Sofia, you need to have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install Node.
+To use Sofia, you must have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install it.
 
 To install Sofia:
 ```console
@@ -12,7 +12,7 @@ curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ```
 
 ###How to use
-To start a new project, just do:
+To start a new project, just write:
 ```console
 sofia myProject
 ```
