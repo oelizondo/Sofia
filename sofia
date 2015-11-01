@@ -33,7 +33,7 @@ function angular_template {
     curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/5d6c11e6a06dbd33a383f9bee1eb19e8c22d697f/index.html -o index.html
 
   else
-    curl https://gist.githubusercontent.com/oelizondo/84c3b419ccaa7cd1f0f5/raw/8b1175bebce7f7af7b6e9904846f70a3835482fb/main.coffee -o main.coffee
+    curl https://gist.githubusercontent.com/oelizondo/da75a61ab577e37b6241/raw/f1552e41ade0b506dc38180fb44e5d81a86f7ef1/main.js -o main.js
   fi
 
   cd ..
@@ -77,7 +77,7 @@ echo "Creating $1..."
 
   curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/d360038ed066f4d6678570b40ef869d9b42d538e/index.html -o index.html
 
-  curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/6a1fcc129d8e701f8174083f043b96d5c7fe6935/gulpfile.js -o gulpfile.js
+  curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/5728e042487a5e409420cdf5a1d21d409af945db/gulpfile.js -o gulpfile.js
 
   mkdir assets js css
 
@@ -105,7 +105,6 @@ echo "Creating $1..."
     gulp-sass
     gulp-plumber
     gulp-watch
-    gulp-coffee
   )
 
   echo 'Installing gulp packages...'
