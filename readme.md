@@ -45,15 +45,10 @@ Packages that come with Sofia:
 * gulp-sass
 * gulp-plumber
 * gulp-watch
-* gulp-babel
 * gulp-live-server
 
 ###Version Control
-Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everthing's in place before making an important push.
-
-###Pushing to Gh-pages
-
-When you type in 
+Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everthing's in place before making an important push from master.
 
 ###Update for this version
 In version 0.1.0, Sofia made the following changes:
