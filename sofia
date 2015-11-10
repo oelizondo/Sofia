@@ -10,19 +10,7 @@ function angular_template {
   if [ "$1" == 'angular' ]; then
     mkdir controllers routes directives
 
-    cd ..
-
-    mkdir build
-
-    cd build
-
-    mkdir js
-
-    cd js
-
     curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/9d38633d188f3fc18080bdb9ef096e21e8060284/app.js -o app.js
-
-    cd ..
 
     cd ..
 
@@ -34,9 +22,10 @@ function angular_template {
 
   else
     curl https://gist.githubusercontent.com/oelizondo/da75a61ab577e37b6241/raw/f1552e41ade0b506dc38180fb44e5d81a86f7ef1/main.js -o main.js
-  fi
 
-  cd ..
+    cd ..
+
+  fi
 
 }
 
@@ -130,7 +119,7 @@ echo "Creating $1..."
 
   echo 'Initial push is pending.'
 
-  echo 'Sofia is done! Cd into and run gulp to start working! <3'
+  echo 'Sofia is done! Cd into your project and run gulp to start working! <3'
 
 else
   echo 'Node is not here, go ahead and install it to use Sofia.'
