@@ -18,6 +18,18 @@ sofia myProject
 ```
 And that's it! Sofia will take it from there.
 
+####Checking the version
+To check Sofia's version, type: 
+```console
+sofia version
+```
+
+####Checking Sofia's Help Module
+For help, type:
+```console
+sofia help
+```
+
 ###Angular
 
 If you pass ```angular``` as the second parameter, Sofia creates the necessary folders and installs Angular and angular-route via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular is easy.
@@ -63,16 +75,22 @@ In no specific order:
 * Add whole Angular application (not just the project directories).
 * Make it compatible (or mergeable) with other frameworks.
 
-###Update for this version
+###Update for 0.1.0
 In version 0.1.0, Sofia made the following changes:
 
 1. Switched CoffeeScript to JavaScript.
 2. Switch to [Google Hosted Libraries](https://developers.google.com/speed/libraries/). (We're trying it out.)
 
+###Update for 0.1.1
+In version 0.1.1, Sofia made minor changes:
+
+1. Implemented a Sofia Version Module
+2. Implemented a Sofia Help Module
+
 ###Version
 Sofia is currently in version:
 
-* 0.1.0
+* 0.1.1
 
 ##Contributing
 1. Fork!

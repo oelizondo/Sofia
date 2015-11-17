@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+#Sofia's Version
+
+if [ "$1" == "version" ] || [ "$1" == "v" ]; then
+  echo 'version 0.1.1'
+  exit
+fi
+
+if [ "$1" == "help" ] || [ "$1" == "h" ]; then
+  echo "% Sofia's Help Module %"
+  echo "For creating a new project: sofia <project_name>"
+  echo "For creating a new angular project: sofia <project_name> angular"
+  echo "For version: sofia version or sofia v"
+  echo "Installed packages: "
+  echo "* jQuery"
+  echo "* Skeleton"
+  echo "* Gulp | gulp-sass | gulp-watch | gulp-plumber | gulp-live-server"
+  exit
+fi
+
 function install_bower {
   bower install skeleton-css
 }
