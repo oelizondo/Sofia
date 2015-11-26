@@ -34,6 +34,10 @@ sofia help
 
 If you pass ```angular``` as the second parameter, Sofia creates the necessary folders and installs Angular and angular-route via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular is easy.
 
+###Templates
+
+In version 0.2.0, passing ```landing``` as a second paramater builds a a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
+
 ###Bower
 Sofia comes with [Bower](http://bower.io/), if you already have it installed, then there is nothing to worry about. If you don't have Bower you'll be prompted to install it. Bower installs Skeleton by default, but you can remove it via:
 
@@ -79,7 +83,7 @@ In no specific order:
 In version 0.1.0, Sofia made the following changes:
 
 1. Switched CoffeeScript to JavaScript.
-2. Switch to [Google Hosted Libraries](https://developers.google.com/speed/libraries/). (We're trying it out.)
+2. Switched to [Google Hosted Libraries](https://developers.google.com/speed/libraries/). (We're trying it out.)
 
 ###Update for 0.1.1
 In version 0.1.1, Sofia made minor changes:
@@ -87,10 +91,16 @@ In version 0.1.1, Sofia made minor changes:
 1. Implemented a Sofia Version Module
 2. Implemented a Sofia Help Module
 
+###Update for 0.1.2
+
+1. Sofia is now responsive!
+2. Landing page now has better styling.
+3. Templates!
+
 ###Version
 Sofia is currently in version:
 
-* 0.1.1
+* 0.1.2
 
 ##Contributing
 1. Fork!

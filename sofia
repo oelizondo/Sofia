@@ -3,7 +3,7 @@
 #Sofia's Version
 
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.1.1'
+  echo 'version 0.1.2'
   exit
 fi
 
@@ -37,7 +37,7 @@ function angular_template {
 
     rm index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/c75382f28d23f3b01947/raw/5d6c11e6a06dbd33a383f9bee1eb19e8c22d697f/index.html -o index.html
+    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/9437b0a2956695bb608e377a17e9968d4739d533/index.html -o index.html
 
   else
     curl https://gist.githubusercontent.com/oelizondo/da75a61ab577e37b6241/raw/f1552e41ade0b506dc38180fb44e5d81a86f7ef1/main.js -o main.js
@@ -83,7 +83,7 @@ if [ ! -z $nodejs ] || [ ! -z $node ]; then
 # Starts project scaffold
 echo "Creating $1..."
 
-  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/d360038ed066f4d6678570b40ef869d9b42d538e/index.html -o index.html
+  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/71ccd1b1fb23892222d804f3d1d9344c79647765/index.html -o index.html
 
   curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/5728e042487a5e409420cdf5a1d21d409af945db/gulpfile.js -o gulpfile.js
 
@@ -97,7 +97,7 @@ echo "Creating $1..."
 
   cd css
 
-  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/0e98b42c858532862ecf2c8e6ab8380a57f90f39/style.scss -o style.scss
+  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/c347f3c1cf11bac20e2abbb155d67fe76da8b6cd/style.scss -o style.scss
 
   touch _variables.scss
 
@@ -106,6 +106,12 @@ echo "Creating $1..."
   cd ..
 
   angular_template $2
+
+  if [ "$2" == "landing" ];then
+    echo "Coming soon!"
+ #   curl #index.html
+ #   curl #style.scss
+  fi
 
   gulppackages=(
     gulp
