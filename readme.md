@@ -96,6 +96,7 @@ In version 0.1.1, Sofia made minor changes:
 1. Sofia is now responsive!
 2. Landing page now has better styling.
 3. Templates!
+4. Normalize.css
 
 ###Version
 Sofia is currently in version:
