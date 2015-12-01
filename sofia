@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 #Sofia's Version
-
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.1.2'
+  echo 'version 0.1.3'
   exit
 fi
 
+#Sofia's help module
 if [ "$1" == "help" ] || [ "$1" == "h" ]; then
   echo "% Sofia's Help Module %"
   echo "For creating a new project: sofia <project_name>"
@@ -19,14 +19,26 @@ if [ "$1" == "help" ] || [ "$1" == "h" ]; then
   exit
 fi
 
+#Sofia's Update Module
+if [ "$1" == "update" ]; then
+  echo "Updating!"
+  cd
+  sudo rm -rf ~/.sofia
+  curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
+  exit
+fi
+
+#Install bower dependencies
 function install_bower {
   bower install skeleton-css
 }
 
+#Template for angular apps
 function angular_template {
   cd js
 
   if [ "$1" == 'angular' ]; then
+
     mkdir controllers routes directives
 
     curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/9d38633d188f3fc18080bdb9ef096e21e8060284/app.js -o app.js
@@ -40,6 +52,7 @@ function angular_template {
     curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/9437b0a2956695bb608e377a17e9968d4739d533/index.html -o index.html
 
   else
+
     curl https://gist.githubusercontent.com/oelizondo/da75a61ab577e37b6241/raw/f1552e41ade0b506dc38180fb44e5d81a86f7ef1/main.js -o main.js
 
     cd ..
@@ -48,105 +61,110 @@ function angular_template {
 
 }
 
-echo 'Welcome to Sofia'
+#Starts a new Sofia Project
+if [ "$1" == "new" ]; then
 
-bower=$(which bower)
+  echo 'Welcome to Sofia'
 
-node=$(which node)
+  bower=$(which bower)
 
-nodejs=$(which nodejs)
+  node=$(which node)
 
-if [ ! -z $nodejs ] || [ ! -z $node ]; then
+  nodejs=$(which nodejs)
 
-  mkdir $1
+  if [ ! -z $nodejs ] || [ ! -z $node ]; then
 
-  cd $1
+    mkdir $2 && cd $2
 
-  echo 'Adding gitignore...'
+    echo 'Adding gitignore...'
 
-  curl https://gist.githubusercontent.com/octocat/9257657/raw/3f9569e65df83a7b328b39a091f0ce9c6efc6429/.gitignore -o .gitignore
+    curl https://gist.githubusercontent.com/octocat/9257657/raw/3f9569e65df83a7b328b39a091f0ce9c6efc6429/.gitignore -o .gitignore
 
-# Installs dependencies
+    if [ ! -z $bower ]; then
+      echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton.'
+      install_bower $2
+    else
+      echo 'Do you want Sofia to install bower?'
+      read answertwo
+      if [ "$answertwo" == 'y' ]; then
+        echo 'Installing bower'
+        sudo npm install --g bower
+      fi
+    fi
 
-  if [ ! -z $bower ]; then
-    echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton.'
-    install_bower $2
+  # Starts project scaffold
+  echo "Creating $2..."
+
+    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/ed677eda8f6e7910f296caa6f1b4cf7e75a8c7af/index.html -o index.html
+
+    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/5728e042487a5e409420cdf5a1d21d409af945db/gulpfile.js -o gulpfile.js
+
+    mkdir assets js css
+
+    cd assets
+
+    mkdir images fonts videos
+
+    cd ..
+
+    cd css
+
+    curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/c347f3c1cf11bac20e2abbb155d67fe76da8b6cd/style.scss -o style.scss
+
+    touch _variables.scss
+
+    touch _mixins.scss
+
+    cd ..
+
+    angular_template $3
+
+    if [ "$3" == "landing" ];then
+      echo "Coming soon!"
+   #   curl #index.html
+   #   curl #style.scss
+    fi
+
+    gulppackages=(
+      gulp
+      gulp-live-server
+      gulp-sass
+      gulp-plumber
+      gulp-watch
+    )
+
+    echo 'Installing gulp packages...'
+
+    for package in "${gulppackages[@]}"
+    do
+      echo 'Should Sofia install: (y/n)' $package
+      read install_option
+      if [ "$install_option" == 'y' ]; then
+        sudo npm install --save-dev $package
+      elif [ "$package" == 'gulp' ]; then
+        break
+      fi
+    done
+
+    git init
+
+    git add -A
+
+    git commit -m "Initial commit, installs dependencies"
+
+    git checkout -b dev
+
+    echo 'Initial push is pending.'
+
+    echo 'Sofia is done! Cd into your project and run gulp to start working! <3'
+
   else
-    echo 'Do you want Sofia to install bower?'
-    read answertwo
-    if [ "$answertwo" == 'y' ]; then
-      echo 'Installing bower'
-      sudo npm install --g bower
-    fi
+    echo 'Node is not here, go ahead and install it to use Sofia.'
+    echo 'Bye <3'
   fi
-
-# Starts project scaffold
-echo "Creating $1..."
-
-  curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/ed677eda8f6e7910f296caa6f1b4cf7e75a8c7af/index.html -o index.html
-
-  curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/5728e042487a5e409420cdf5a1d21d409af945db/gulpfile.js -o gulpfile.js
-
-  mkdir assets js css
-
-  cd assets
-
-  mkdir images fonts videos
-
-  cd ..
-
-  cd css
-
-  curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/c347f3c1cf11bac20e2abbb155d67fe76da8b6cd/style.scss -o style.scss
-
-  touch _variables.scss
-
-  touch _mixins.scss
-
-  cd ..
-
-  angular_template $2
-
-  if [ "$2" == "landing" ];then
-    echo "Coming soon!"
- #   curl #index.html
- #   curl #style.scss
-  fi
-
-  gulppackages=(
-    gulp
-    gulp-live-server
-    gulp-sass
-    gulp-plumber
-    gulp-watch
-  )
-
-  echo 'Installing gulp packages...'
-
-  for package in "${gulppackages[@]}"
-  do
-    echo 'Should Sofia install: (y/n)' $package
-    read install_option
-    if [ "$install_option" == 'y' ]; then
-      sudo npm install --save-dev $package
-    elif [ "$package" == 'gulp' ]; then
-      break
-    fi
-  done
-
-  git init
-
-  git add -A
-
-  git commit -m "Initial commit, installs dependencies"
-
-  git checkout -b dev
-
-  echo 'Initial push is pending.'
-
-  echo 'Sofia is done! Cd into your project and run gulp to start working! <3'
 
 else
-  echo 'Node is not here, go ahead and install it to use Sofia.'
-  echo 'Bye <3'
+
+  echo "Command not found."
+
 fi
