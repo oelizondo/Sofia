@@ -3,7 +3,7 @@
 #Sofia's Version
 
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.1.2'
+  echo 'version 0.1.3'
   exit
 fi
 
@@ -17,6 +17,10 @@ if [ "$1" == "help" ] || [ "$1" == "h" ]; then
   echo "* Skeleton"
   echo "* Gulp | gulp-sass | gulp-watch | gulp-plumber | gulp-live-server"
   exit
+fi
+
+if [ "$1" == "update" ]; then
+ curl https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 fi
 
 function install_bower {
