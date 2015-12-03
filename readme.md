@@ -12,9 +12,9 @@ curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ```
 
 ###How to use
-To start a new project, just write:
+To start a new project, just type:
 ```console
-sofia myProject
+sofia new myProject
 ```
 And that's it! Sofia will take it from there.
 
@@ -28,6 +28,12 @@ sofia version
 For help, type:
 ```console
 sofia help
+```
+
+####Updating Sofia
+To download the latest version of Sofia:
+```console
+sofia update
 ```
 
 ###Angular
@@ -79,18 +85,6 @@ In no specific order:
 * Add whole Angular application (not just the project directories).
 * Make it compatible (or mergeable) with other frameworks.
 
-###Update for 0.1.0
-In version 0.1.0, Sofia made the following changes:
-
-1. Switched CoffeeScript to JavaScript.
-2. Switched to [Google Hosted Libraries](https://developers.google.com/speed/libraries/). (We're trying it out.)
-
-###Update for 0.1.1
-In version 0.1.1, Sofia made minor changes:
-
-1. Implemented a Sofia Version Module
-2. Implemented a Sofia Help Module
-
 ###Update for 0.1.2
 
 1. Sofia is now responsive!
@@ -98,10 +92,18 @@ In version 0.1.1, Sofia made minor changes:
 3. Templates!
 4. Normalize.css
 
+###Update for 0.1.3
+
+1. Update module.
+2. ```new``` keyword.
+
+
 ###Version
 Sofia is currently in version:
 
-* 0.1.2
+* 0.1.3
+
+To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
 ##Contributing
 1. Fork!
