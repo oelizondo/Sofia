@@ -19,7 +19,7 @@ sofia new myProject
 And that's it! Sofia will take it from there.
 
 ####Checking the version
-To check Sofia's version, type: 
+To check Sofia's version, type:
 ```console
 sofia version
 ```
@@ -44,17 +44,6 @@ If you pass ```angular``` as the second parameter, Sofia creates the necessary f
 
 In version 0.2.0, passing ```landing``` as a second paramater builds a a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
 
-###Bower
-Sofia comes with [Bower](http://bower.io/), if you already have it installed, then there is nothing to worry about. If you don't have Bower you'll be prompted to install it. Bower installs Skeleton by default, but you can remove it via:
-
-```console
-bower uninstall skeleton-css
-```
-Naturally, you can install other packages via:
-```console
-bower install <package>
-```
-
 ###CDNs
 Sofia makes your app fast by adding jQuery and Angular CDNs to your app. We thought a lot about this, and we came to the conclusion that a CDN saves your app from bloat and unnecessary weight.
 
@@ -67,7 +56,11 @@ Packages that come with Sofia:
 * gulp-sass
 * gulp-plumber
 * gulp-watch
-* gulp-live-server
+
+To install more gulp packages, run:
+```console
+npm install --save-dev gulp-<package>
+```
 
 ###Version Control
 Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everthing's in place before making an important push from master.
@@ -97,11 +90,15 @@ In no specific order:
 1. Update module.
 2. ```new``` keyword.
 
+###Update for 0.1.4
+1. This is a test version for easier deployment.
+2. Version 0.2.0 will have ES6, bundler (Webpack or Browserify) to manage JS files.
+3. Next version will make jQuery a local dependency, not CDN installation, such as Skeleton.
 
 ###Version
 Sofia is currently in version:
 
-* 0.1.3
+* 0.1.4
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 

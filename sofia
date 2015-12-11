@@ -2,7 +2,7 @@
 
 #Sofia's Version
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.1.3'
+  echo 'version 0.1.4'
   exit
 fi
 
@@ -13,9 +13,10 @@ if [ "$1" == "help" ] || [ "$1" == "h" ]; then
   echo "For creating a new angular project: sofia <project_name> angular"
   echo "For version: sofia version or sofia v"
   echo "Installed packages: "
-  echo "* jQuery"
+  echo "* jQuery (CDN)"
   echo "* Skeleton"
-  echo "* Gulp | gulp-sass | gulp-watch | gulp-plumber | gulp-live-server"
+  echo "* Normalize"
+  echo "* Gulp | gulp-sass | gulp-watch | gulp-plumber"
   exit
 fi
 
@@ -26,6 +27,10 @@ if [ "$1" == "update" ]; then
   sudo rm -rf ~/.sofia
   curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
   exit
+fi
+
+if [ "$1" == "run" ]; then
+  python SimpleHTTPServer
 fi
 
 #Install bower dependencies
@@ -78,13 +83,10 @@ if [ "$1" == "new" ]; then
 
     echo 'Adding gitignore...'
 
-    curl https://gist.githubusercontent.com/octocat/9257657/raw/3f9569e65df83a7b328b39a091f0ce9c6efc6429/.gitignore -o .gitignore
+    curl https://gist.githubusercontent.com/oelizondo/792469a52dae550750d5/raw/02ac633dc32632bfc18ea5e2dbe263cee1585f77/.gitignore -o .gitignore
 
-    if [ ! -z $bower ]; then
-      echo 'Bower has been included so you can add your personal dependencies. Installing Skeleton.'
-      install_bower $2
-    else
-      echo 'Do you want Sofia to install bower?'
+    if [ -z $bower ]; then
+      echo 'Do you want Sofia to install bower?(y/n)'
       read answertwo
       if [ "$answertwo" == 'y' ]; then
         echo 'Installing bower'
@@ -95,9 +97,9 @@ if [ "$1" == "new" ]; then
   # Starts project scaffold
   echo "Creating $2..."
 
-    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/ed677eda8f6e7910f296caa6f1b4cf7e75a8c7af/index.html -o index.html
+    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/5728e042487a5e409420cdf5a1d21d409af945db/gulpfile.js -o gulpfile.js
+    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/1f218e858f5863ac626608a0e073d9384a7cf8eb/gulpfile.js -o gulpfile.js
 
     mkdir assets js css
 
@@ -115,6 +117,13 @@ if [ "$1" == "new" ]; then
 
     touch _mixins.scss
 
+    mkdir vendor && cd vendor
+
+    curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o skeleton.css
+
+    curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o normalize.css
+
+    cd ..
     cd ..
 
     angular_template $3
@@ -127,7 +136,6 @@ if [ "$1" == "new" ]; then
 
     gulppackages=(
       gulp
-      gulp-live-server
       gulp-sass
       gulp-plumber
       gulp-watch
