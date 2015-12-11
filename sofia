@@ -30,7 +30,8 @@ if [ "$1" == "update" ]; then
 fi
 
 if [ "$1" == "run" ]; then
-  python SimpleHTTPServer
+  cp -R assets build && cd build
+  python -m SimpleHTTPServer
 fi
 
 #Install bower dependencies
@@ -99,7 +100,7 @@ if [ "$1" == "new" ]; then
 
     curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/1f218e858f5863ac626608a0e073d9384a7cf8eb/gulpfile.js -o gulpfile.js
+    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/0050453064369806c8963ac489113d53ea08728b/gulpfile.js -o gulpfile.js
 
     mkdir assets js css
 
