@@ -43,7 +43,7 @@ function install_bower {
 function angular_template {
   cd js
 
-  if [ "$1" == 'angular' ]; then
+  if [ "$1" == "angular" ]; then
 
     mkdir controllers routes directives
 
@@ -56,6 +56,18 @@ function angular_template {
     rm index.html
 
     curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/9437b0a2956695bb608e377a17e9968d4739d533/index.html -o index.html
+
+  elif [ "$1" == "backbone" ]; then
+
+    mkdir models routes views helpers templates vendor
+
+    curl https://gist.githubusercontent.com/oelizondo/353ddfe711cd26c52930/raw/09ed1510ab5fa5304bace1e828ac48d414292e3b/backbone.js -o app.js
+
+    cd ..
+
+    rm index.html
+
+    curl https://gist.githubusercontent.com/oelizondo/109e602537d6565d9e38/raw/2d74179f34b1fb5a3ea299dca535113b86b470c2/backbone.html -o index.html
 
   else
 
@@ -131,8 +143,7 @@ if [ "$1" == "new" ]; then
 
     if [ "$3" == "landing" ];then
       echo "Coming soon!"
-   #   curl #index.html
-   #   curl #style.scss
+      exit
     fi
 
     gulppackages=(

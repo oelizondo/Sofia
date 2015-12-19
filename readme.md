@@ -7,6 +7,7 @@ Make sure you have Git installed.
 To use Sofia, you must have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install it.
 
 To install Sofia:
+
 ```console
 curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ```
@@ -20,18 +21,21 @@ And that's it! Sofia will take it from there.
 
 ####Checking the version
 To check Sofia's version, type:
+
 ```console
 sofia version
 ```
 
 ####Checking Sofia's Help Module
 For help, type:
+
 ```console
 sofia help
 ```
 
 ####Updating Sofia
 To download the latest version of Sofia:
+
 ```console
 sofia update
 ```
@@ -39,6 +43,13 @@ sofia update
 ###Angular
 
 If you pass ```angular``` as the second parameter, Sofia creates the necessary folders and installs Angular and angular-route via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular is easy.
+
+###Backbone
+In version 0.1.5, Sofia has the ability to create a [Backbone](http://backbonejs.org) application. Sofia installs Underscore and Backbone from a CDN. 
+
+```console
+sofia new myApp backbone
+```
 
 ###Templates
 
@@ -78,27 +89,19 @@ In no specific order:
 * Add whole Angular application (not just the project directories).
 * Make it compatible (or mergeable) with other frameworks.
 
-###Update for 0.1.2
+###Update for 0.1.5
 
-1. Sofia is now responsive!
-2. Landing page now has better styling.
-3. Templates!
-4. Normalize.css
+1. Sofia will enter beta (0.2.0) soon, and will come with:
+	* ES6
+	* File Bundler (Webpack or Browserify)
+	* Deployment (gh-pages)
+2. Backbone applications
 
-###Update for 0.1.3
-
-1. Update module.
-2. ```new``` keyword.
-
-###Update for 0.1.4
-1. This is a test version for easier deployment.
-2. Version 0.2.0 will have ES6, bundler (Webpack or Browserify) to manage JS files.
-3. Next version will make jQuery a local dependency, not CDN installation, such as Skeleton.
 
 ###Version
 Sofia is currently in version:
 
-* 0.1.4
+* 0.1.5
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
