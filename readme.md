@@ -13,11 +13,22 @@ curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ```
 
 ###How to use
+
+#####Startup
 To start a new project, just type:
+
 ```console
 sofia new myProject
 ```
+
 And that's it! Sofia will take it from there.
+
+#####Running Sofia
+Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp.
+
+```console
+sofia run
+```
 
 ####Checking the version
 To check Sofia's version, type:
