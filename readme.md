@@ -23,6 +23,14 @@ sofia new myProject
 
 And that's it! Sofia will take it from there.
 
+#####Package.json
+Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run. After Sofía installs everyhting, simply run:
+
+```console
+sudo npm install
+```
+
+
 #####Running Sofia
 Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp.
 
@@ -70,8 +78,7 @@ In version 0.2.0, passing ```landing``` as a second paramater builds a a whole l
 Sofia makes your app fast by adding jQuery and Angular CDNs to your app. We thought a lot about this, and we came to the conclusion that a CDN saves your app from bloat and unnecessary weight.
 
 ###Gulp
-The designated task runner for Sofia is [Gulp](http://gulpjs.com/). It's amazingly easy to set up and will get you started in a fly. You don't have to worry about a thing, we'll take it from here and make sure you have Gulp and start working right away!
-If you don't use Gulp as your task runner, simply tell Sofia you don't want it at the installation setup :3
+The designated task runner for Sofia is [Gulp](http://gulpjs.com/). It's amazingly easy to set up and will get you started in a fly.
 
 Packages that come with Sofia:
 
@@ -80,6 +87,7 @@ Packages that come with Sofia:
 * gulp-watch
 
 To install more gulp packages, run:
+
 ```console
 npm install --save-dev gulp-<package>
 ```
@@ -108,11 +116,16 @@ In no specific order:
 	* Deployment (gh-pages)
 2. Backbone applications
 
+###Update for 0.1.6
+
+1. Sofia now includes a package.json file to manage dependencies, instead of installing them manually
+
+
 
 ###Version
 Sofia is currently in version:
 
-* 0.1.5
+* 0.1.6
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
