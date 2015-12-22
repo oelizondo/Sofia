@@ -24,12 +24,8 @@ sofia new myProject
 And that's it! Sofia will take it from there.
 
 #####Package.json
-Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run. After Sofía installs everyhting, simply run:
 
-```console
-sudo npm install
-```
-
+Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run.
 
 #####Running Sofia
 Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp.
