@@ -59,16 +59,13 @@ To download the latest version of Sofia:
 sofia update
 ```
 
-###Angular
+###Angular and Backbone
 
-If you pass ```angular``` as the second parameter, Sofia creates the necessary folders and installs Angular and angular-route via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular is easy.
-
-###Backbone
-In version 0.1.5, Sofia has the ability to create a [Backbone](http://backbonejs.org) application. Sofia installs Underscore and Backbone from a CDN. 
+If you pass ```angular``` or ```backbone``` as the second parameter, Sofia creates the necessary folders and installs them via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular or Backbone is easy.
 
 ```console
-sofia new myApp backbone
-```
+	sofia new myProject <angular / backbone>
+ ```
 
 ###Templates
 
