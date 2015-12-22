@@ -92,6 +92,13 @@ if [ "$1" == "new" ]; then
 
   if [ ! -z $nodejs ] || [ ! -z $node ]; then
 
+    if [ "$3" == "landing" ]; then
+      git clone https://github.com/oelizondo/sofia_template_1.git
+      cp -R sofia_template_1 $2
+      rm -rf sofia_template_1
+      exit
+    fi
+
     mkdir $2 && cd $2
 
     echo 'Adding gitignore...'
@@ -140,11 +147,6 @@ if [ "$1" == "new" ]; then
     cd ..
 
     angular_template $3
-
-    if [ "$3" == "landing" ];then
-      echo "Coming soon!"
-      exit
-    fi
 
     curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/cb1bc2950b2ba5dc1df122a69814a783a5097bd7/package.json -o package.json
 
