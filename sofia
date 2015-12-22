@@ -2,7 +2,7 @@
 
 #Sofia's Version
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.1.4'
+  echo 'version 0.1.6'
   exit
 fi
 
