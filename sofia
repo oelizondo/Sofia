@@ -119,7 +119,7 @@ if [ "$1" == "new" ]; then
 
     curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/0050453064369806c8963ac489113d53ea08728b/gulpfile.js -o gulpfile.js
+    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/ab46107625611b8512f8ca51b0ef7157da3f25de/gulpfile.js -o gulpfile.js
 
     mkdir assets js css
 
@@ -148,7 +148,7 @@ if [ "$1" == "new" ]; then
 
     angular_template $3
 
-    curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/cb1bc2950b2ba5dc1df122a69814a783a5097bd7/package.json -o package.json
+    curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/e7f39e3470a8e65256e1db8f9f3eddc083699e28/package.json -o package.json
 
     git init
 
@@ -157,6 +157,8 @@ if [ "$1" == "new" ]; then
     git commit -m "Initial commit, installs dependencies"
 
     git checkout -b dev
+
+    sudo npm install
 
     echo 'Initial push is pending.'
 
