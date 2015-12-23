@@ -28,7 +28,7 @@ And that's it! Sofia will take it from there.
 Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run.
 
 #####Running Sofia
-Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp.
+Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp. Remember to run gulp on a separate tab.
 
 ```console
 sofia run
@@ -78,6 +78,7 @@ Packages that come with Sofia:
 * gulp-sass
 * gulp-plumber
 * gulp-watch
+* gulp-babel
 
 To install more gulp packages, run:
 
@@ -98,27 +99,25 @@ some profile settings and require a terminal session restart.
 In no specific order:
 
 * Make a version for Windows.
-* Add whole Angular application (not just the project directories).
+* ~~Add whole Angular application (not just the project directories).~~
 * Make it compatible (or mergeable) with other frameworks.
 
-###Update for 0.1.5
 
-1. Sofia will enter beta (0.2.0) soon, and will come with:
-	* ES6
-	* File Bundler (Webpack or Browserify)
-	* Deployment (gh-pages)
-2. Backbone applications
+###Update for version 0.2.0
 
-###Update for 0.1.6
+1. Sofia is now in beta 0.2.0!
+2. Sofía now has ES6 support out of the box!
+3. Templates are now active.
+4. A new Landing website!
+5. More active support and features coming!
 
-1. Sofia now includes a package.json file to manage dependencies, instead of installing them manually
 
 
 
 ###Version
 Sofia is currently in version:
 
-* 0.1.6
+* 0.2.0
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
@@ -138,3 +137,4 @@ Special thanks to those who PR and help out with this project:
 
 * http://github.com/diegowifi
 * https://github.com/MrOutis
+* https://github.com/luismnzr
