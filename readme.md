@@ -55,6 +55,18 @@ To download the latest version of Sofia:
 sofia update
 ```
 
+####Generators
+Sofia has two generators to extend your app:
+
+```console
+sofia g view myView
+```
+and
+
+```console
+sofia g style myStyle
+```
+
 ###Angular and Backbone
 
 If you pass ```angular``` or ```backbone``` as the second parameter, Sofia creates the necessary folders and installs them via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular or Backbone is easy.
