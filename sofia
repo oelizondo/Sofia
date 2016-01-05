@@ -35,6 +35,23 @@ if [ "$1" == "run" ]; then
   python -m SimpleHTTPServer
 fi
 
+# if [ "$1" == "slim" ]; then
+#
+# fi
+
+if [ "$1" == "g" ]; then
+
+  if [ "$2" == "view" ]; then
+    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o $3.html
+    exit
+  fi
+
+  if [ "$2" == "style" ]; then
+    touch css/$3.scss
+    exit
+  fi
+fi
+
 #Install bower dependencies
 function install_bower {
   bower install skeleton-css
