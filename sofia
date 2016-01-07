@@ -2,7 +2,7 @@
 
 #Sofia's Version
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.2.1'
+  echo 'version 0.2.2'
   exit
 fi
 
@@ -35,9 +35,31 @@ if [ "$1" == "run" ]; then
   python -m SimpleHTTPServer
 fi
 
-# if [ "$1" == "slim" ]; then
-#
-# fi
+if [ "$1" == "slim" ]; then
+
+  mkdir $2 && cd $2
+
+  mkdir js css
+
+  touch index.html
+
+  cd css
+
+  mkdir vendor
+
+  cd ..
+
+  cd js
+
+  touch main.js
+
+  cd ..
+
+  Echo 'Sofia slim version is done'
+
+  exit
+
+fi
 
 if [ "$1" == "g" ]; then
 

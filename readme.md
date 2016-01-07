@@ -67,12 +67,20 @@ and
 sofia g style myStyle
 ```
 
+####Slim
+
+Sofia has a very minimalistic generator that only creates the necessary files for your website to run.
+
+```console
+sofia slim myProject
+```
+
 ###Angular and Backbone
 
 If you pass ```angular``` or ```backbone``` as the second parameter, Sofia creates the necessary folders and installs them via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular or Backbone is easy.
 
 ```console
-	sofia new myProject <angular / backbone>
+sofia new myProject <angular / backbone>
  ```
 
 ###Templates
@@ -124,12 +132,15 @@ In no specific order:
 5. More active support and features coming!
 
 
+###Update for version 0.2.2
 
+1. Sofia now has generators.
+2. Sofia now has a slim version for minimal projecs.
 
 ###Version
 Sofia is currently in version:
 
-* 0.2.0
+* 0.2.2
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
