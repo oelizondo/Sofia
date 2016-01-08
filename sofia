@@ -2,7 +2,7 @@
 
 #Sofia's Version
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.2.2'
+  echo 'version 0.2.3'
   exit
 fi
 
@@ -14,10 +14,9 @@ if [ "$1" == "help" ] || [ "$1" == "h" ]; then
   echo "For creating a new backbone project: sofia <project_name> backbone"
   echo "For version: sofia version or sofia v"
   echo "Installed packages: "
-  echo "* jQuery (CDN)"
-  echo "* Skeleton"
-  echo "* Normalize"
-  echo "* Gulp | gulp-sass | gulp-watch | gulp-plumber | gulp-babel"
+  echo "Skeleton"
+  echo "Normalize"
+  echo "Gulp | gulp-sass | gulp-watch | gulp-plumber"
   exit
 fi
 
@@ -81,9 +80,21 @@ function install_bower {
 
 #Template for angular apps
 function angular_template {
+
   cd js
 
   if [ "$1" == "angular" ]; then
+
+    cd ..
+
+    rm package.json
+    rm gulpfile.js
+
+    curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/e7f39e3470a8e65256e1db8f9f3eddc083699e28/package.json -o package.json
+
+    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/ab46107625611b8512f8ca51b0ef7157da3f25de/gulpfile.js -o gulpfile.js
+
+    cd js
 
     mkdir controllers routes directives
 
@@ -98,6 +109,17 @@ function angular_template {
     curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/9437b0a2956695bb608e377a17e9968d4739d533/index.html -o index.html
 
   elif [ "$1" == "backbone" ]; then
+
+    cd ..
+
+    rm package.json
+    rm gulpfile.js
+
+    curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/e7f39e3470a8e65256e1db8f9f3eddc083699e28/package.json -o package.json
+
+    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/ab46107625611b8512f8ca51b0ef7157da3f25de/gulpfile.js -o gulpfile.js
+
+    cd js
 
     mkdir models routes views helpers templates vendor
 
@@ -159,7 +181,7 @@ if [ "$1" == "new" ]; then
 
     curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o index.html
 
-    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/ab46107625611b8512f8ca51b0ef7157da3f25de/gulpfile.js -o gulpfile.js
+    curl https://gist.githubusercontent.com/oelizondo/9be6afa3925bb32c24b8/raw/01d3577cd4234119c4fc86c89beaf9669572b4b0/gulpfile.js -o gulpfile.js
 
     mkdir assets js css
 
@@ -186,9 +208,9 @@ if [ "$1" == "new" ]; then
     cd ..
     cd ..
 
-    angular_template $3
+    curl https://gist.githubusercontent.com/oelizondo/15c32cc0ab5d1c981dbf/raw/fde4e19e8f958c1f8a605a8dd1e1fc02fd7c8610/prackage.json -o package.json
 
-    curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/e7f39e3470a8e65256e1db8f9f3eddc083699e28/package.json -o package.json
+    angular_template $3
 
     git init
 
@@ -198,11 +220,9 @@ if [ "$1" == "new" ]; then
 
     git checkout -b dev
 
-    sudo npm install
-
     echo 'Initial push is pending.'
-
     echo 'Sofia is done! Cd into your project and run gulp to start working! <3'
+    echo 'Just run npm install to install the dev dependencies and start working'
 
   else
     echo 'Node is not here, go ahead and install it to use Sofia.'
@@ -210,7 +230,5 @@ if [ "$1" == "new" ]; then
   fi
 
 else
-
   echo "Command not found."
-
 fi

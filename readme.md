@@ -98,9 +98,8 @@ Packages that come with Sofia:
 * gulp-sass
 * gulp-plumber
 * gulp-watch
-* gulp-babel
 
-To install more gulp packages, run:
+To install more gulp or npm packages, run:
 
 ```console
 npm install --save-dev gulp-<package>
@@ -119,28 +118,22 @@ some profile settings and require a terminal session restart.
 In no specific order:
 
 * Make a version for Windows.
-* ~~Add whole Angular application (not just the project directories).~~
 * Make it compatible (or mergeable) with other frameworks.
 
+###Update for version 0.2.3
 
-###Update for version 0.2.0
+1. Sofia base projects now have Javascript and more complex apps have ES6.
+2. Sofia now has a slim version for minimal projects.
+3. New website is in progress.
 
-1. Sofia is now in beta 0.2.0!
-2. Sofía now has ES6 support out of the box!
-3. Templates are now active.
-4. A new Landing website!
-5. More active support and features coming!
+###About Babel and Javascript
 
-
-###Update for version 0.2.2
-
-1. Sofia now has generators.
-2. Sofia now has a slim version for minimal projecs.
+While we understand the ES6 is becoming an industry standard, we noticed it made the dependencies of a Sofia project heavier and harder to configure. That's why we decided to move the ES6 packages to only Angular and Backbone applications, where we think it'll be more useful. Now, the ```sofia new myProject``` command will come with regular Javascript, considering this is a static website generator.
 
 ###Version
 Sofia is currently in version:
 
-* 0.2.2
+* 0.2.3
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
