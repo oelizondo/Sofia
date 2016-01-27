@@ -113,18 +113,9 @@ Sofia uses an agile approach when it comes to versioning your software. When usi
 Restart your terminal after installing Sofia. The installation changes
 some profile settings and require a terminal session restart.
 
-###Todo
+###Update for version 0.2.4
 
-In no specific order:
-
-* Make a version for Windows.
-* Make it compatible (or mergeable) with other frameworks.
-
-###Update for version 0.2.3
-
-1. Sofia base projects now have Javascript and more complex apps have ES6.
-2. Sofia now has a slim version for minimal projects.
-3. New website is in progress.
+1. A new ```gulpfile.js``` file was included to have a local server for development run by gulp.
 
 ###About Babel and Javascript
 
@@ -133,7 +124,7 @@ While we understand the ES6 is becoming an industry standard, we noticed it made
 ###Version
 Sofia is currently in version:
 
-* 0.2.3
+* 0.2.4
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
