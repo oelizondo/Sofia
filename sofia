@@ -31,7 +31,7 @@ fi
 
 if [ "$1" == "run" ]; then
 
-  if [ -z assets]; then
+  if [ -z assets ]; then
     gulp
   else
     cp -R assets build
