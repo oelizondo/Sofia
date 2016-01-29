@@ -31,8 +31,8 @@ fi
 
 if [ "$1" == "run" ]; then
 
-  if [ ! -z assets ]; then
-    gulp
+  if [ ! -z gulpfile.js ]; then
+    python -m SimpleHTTPServer
   else
     cp -R assets build
     gulp
@@ -138,7 +138,7 @@ function angular_template {
 
     curl https://gist.githubusercontent.com/oelizondo/109e602537d6565d9e38/raw/2d74179f34b1fb5a3ea299dca535113b86b470c2/backbone.html -o index.html
   elif [ "$1" == "react" ]; then
-    
+    echo "coming soon"
   else
 
     curl https://gist.githubusercontent.com/oelizondo/da75a61ab577e37b6241/raw/f1552e41ade0b506dc38180fb44e5d81a86f7ef1/main.js -o main.js
