@@ -31,7 +31,7 @@ fi
 
 if [ "$1" == "run" ]; then
 
-  if [ ! -z gulpfile.js ]; then
+  if [ ! -f gulpfile.js ]; then
     python -m SimpleHTTPServer
   else
     cp -R assets build
