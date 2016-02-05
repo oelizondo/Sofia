@@ -2,7 +2,7 @@
 
 #Sofia's Version
 if [ "$1" == "version" ] || [ "$1" == "v" ]; then
-  echo 'version 0.2.4'
+  echo 'version 0.2.5'
   exit
 fi
 
@@ -10,6 +10,7 @@ fi
 if [ "$1" == "help" ] || [ "$1" == "h" ]; then
   echo "% Sofia's Help Module %"
   echo "For creating a new project: sofia new <project_name>"
+  echo "For creating a new slim project: sofia slim <project_name>"
   echo "For creating a new angular project: sofia <project_name> angular"
   echo "For creating a new backbone project: sofia <project_name> backbone"
   echo "For version: sofia version or sofia v"
@@ -70,7 +71,14 @@ fi
 if [ "$1" == "g" ]; then
 
   if [ "$2" == "view" ]; then
-    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o $3.html
+    if [  ! -d views ]; then
+      mkdir views && cd views
+      curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o $3.html
+    else
+      cd views
+      curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o $3.html
+    fi
+    cd ..
     exit
   fi
 
@@ -220,6 +228,10 @@ if [ "$1" == "new" ]; then
 
     angular_template $3
 
+    echo "Installing gulp and node dependencies, this might take a while..."
+
+    sudo npm install
+
     git init
 
     git add -A
@@ -230,7 +242,6 @@ if [ "$1" == "new" ]; then
 
     echo 'Initial push is pending.'
     echo 'Sofia is done! Cd into your project and run gulp to start working! <3'
-    echo 'Just run npm install to install the dev dependencies and start working'
 
   else
     echo 'Node is not here, go ahead and install it to use Sofia.'

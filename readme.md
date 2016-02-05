@@ -28,7 +28,7 @@ And that's it! Sofia will take it from there.
 Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run.
 
 #####Running Sofia
-Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp. Remember to run gulp on a separate tab.
+Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp. 
 
 ```console
 sofia run
@@ -98,6 +98,7 @@ Packages that come with Sofia:
 * gulp-sass
 * gulp-plumber
 * gulp-watch
+* gulp-live-server
 
 To install more gulp or npm packages, run:
 
@@ -124,7 +125,7 @@ While we understand the ES6 is becoming an industry standard, we noticed it made
 ###Version
 Sofia is currently in version:
 
-* 0.2.4
+* 0.2.5
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
