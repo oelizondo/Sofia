@@ -143,6 +143,6 @@ To work with other versions of Sofia simply checkout the branch with the corresp
 ##Contributors
 Special thanks to those who PR and help out with this project:
 
-* http://github.com/diegowifi
-* https://github.com/MrOutis
-* https://github.com/luismnzr
+|  [![MrOutis](https://avatars.githubusercontent.com/u/7363250?v=3&s=80)](https://github.com/MrOutis) | [![diegowifi](https://avatars.githubusercontent.com/u/2978730?v=3&s=80)](https://github.com/diegowifi) | [![luismnzr](https://avatars.githubusercontent.com/u/12598484?v=3&s=80)](https://github.com/luismnzr)  |
+| :--:|:--:|:--: |
+|  [MrOutis](https://github.com/MrOutis) | [diegowifi](https://github.com/diegowifi) | [luismnzr](https://github.com/luismnzr)  |
