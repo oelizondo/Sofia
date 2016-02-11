@@ -28,7 +28,7 @@ And that's it! Sofia will take it from there.
 Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run.
 
 #####Running Sofia
-Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp. 
+Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp.
 
 ```console
 sofia run
@@ -85,7 +85,7 @@ sofia new myProject <angular / backbone>
 
 ###Templates
 
-In version 0.2.0, passing ```landing``` as a second paramater builds a a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
+In version 0.2.0, passing ```landing``` as a second parameter builds a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
 
 ###CDNs
 Sofia makes your app fast by adding jQuery and Angular CDNs to your app. We thought a lot about this, and we came to the conclusion that a CDN saves your app from bloat and unnecessary weight.
@@ -107,7 +107,7 @@ npm install --save-dev gulp-<package>
 ```
 
 ###Version Control
-Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everthing's in place before making an important push from master.
+Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everything is in place before making an important push from master.
 
 ###Remember to
 
