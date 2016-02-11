@@ -122,10 +122,14 @@ some profile settings and require a terminal session restart.
 
 While we understand the ES6 is becoming an industry standard, we noticed it made the dependencies of a Sofia project heavier and harder to configure. That's why we decided to move the ES6 packages to only Angular and Backbone applications, where we think it'll be more useful. Now, the ```sofia new myProject``` command will come with regular Javascript, considering this is a static website generator.
 
+###Next Version
+
+The next version of Sofía will include the current version of [Andrea](https://github.com/oelizondo/Andrea), a font-end framework I created for rapid development.
+
 ### Version
 Sofia is currently in version:
 
-* 0.2.5
+* 0.2.6
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
