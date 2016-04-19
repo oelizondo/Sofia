@@ -2,7 +2,6 @@
 
 
 #DRY Functions
-
 function help {
   echo "% Sofia's Help Module %"
   echo "For creating a new project: sofia new <project_name>"
@@ -38,7 +37,6 @@ if [ "$1" == "--update" ]; then
 fi
 
 if [ "$1" == "run" ]; then
-
   if [ ! -f gulpfile.js ]; then
     python -m SimpleHTTPServer
   else

@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+### Utility Functions ###
+function help {
+  echo "% Sofia's Help Module %"
+  echo "For creating a new project: sofia new <project_name>"
+  echo "For creating a new slim project: sofia slim <project_name>"
+  echo "For version: sofia version or sofia v"
+  exit
+}
+
+#Sofia's Version
+if [ "$1" == "--version" ] || [ "$1" == "-v" ]; then
+  echo 'version 0.2.6'
+  exit
+fi
+
+#Sofia's help module
+if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+  help
+fi
+
+#Sofia's Update Module
+if [ "$1" == "--update" ]; then
+  echo "Updating!"
+  cd
+  sudo rm -rf ~/.sofia
+  curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
+  exit
+fi
+
+if [ "$1" == "slim" ]; then
+
+  echo "Creating $2"
+  mkdir $2 && cd $2
+
+  echo "Created folders"
+  mkdir js css assets
+
+  touch css/styles.css js/main.js
+
+  echo "<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='UTF-8'>
+    <title>Sofia</title>
+  </head>
+  <body>
+    
+  </body>
+</html>" >> index.html
+
+  echo "$2 is done"
+  exit
+fi
+
+if [ "$1" == "compile" ]; then
+  mkdir www
+  mkdir www/css www/js
+  cp css/*.css www/css
+  cp js/*.js www/js
+  cp index.html www
+  cp -R assets www
+fi
+
