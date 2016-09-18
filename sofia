@@ -1,34 +1,190 @@
 #!/usr/bin/env bash
 
-
-#DRY Functions
+#Help
 function help {
   echo "% Sofia's Help Module %"
   echo "For creating a new project: sofia new <project_name>"
   echo "For creating a new slim project: sofia slim <project_name>"
-  echo "For creating a new angular project: sofia <project_name> angular"
-  echo "For creating a new backbone project: sofia <project_name> backbone"
-  echo "For version: sofia version or sofia v"
+  echo "For version: sofia --version or sofia -v"
   echo "Installed packages: "
   echo "Skeleton"
   echo "Normalize"
-  echo "Gulp | gulp-sass | gulp-watch | gulp-live-server"
+  echo "Gulp"
   exit
 }
 
+function add_gitignore {
+  echo "
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+node_modules
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+" > .gitignore
+}
+
+function add_html {
+  echo "
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Sofia</title>
+    <meta name='viewport' content='initial-scale=1, maximum-scale=1'>
+    <link rel='stylesheet' href='css/style.css'>
+    <link rel='stylesheet' href='css/vendor/skeleton.css'>
+    <link rel='stylesheet' href='css/vendor/normalize.css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+</head>
+    <body>
+        <h1 class='title'>Love, <br> <span>Sofia</span>.</h1>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+        <script src='js/main.js'></script>
+    </body>
+</html>
+" > index.html
+}
+
+function add_gulpfile {
+echo "
+var gulp    = require('gulp'),
+    sass    = require('gulp-sass'),
+    gls     = require('gulp-live-server'),
+    watch   = require('gulp-watch');
+
+gulp.task('serve', function(){
+    var server = gls.static('/', 8080);
+    server.start();
+});
+
+gulp.task('sass-compile', function(){
+    gulp.src('css/**.scss')
+    .pipe(watch('css/**.scss'))
+    .pipe(sass())
+    .pipe(gulp.dest('css/'));
+});
+
+gulp.task('html', function(){
+    gulp.src('./*.html')
+    .pipe(watch('./*.html'))
+    .pipe(gulp.dest('/'));
+});
+
+gulp.task('js', function(){
+    gulp.src('js/**/*.js')
+    .pipe(watch('js/**/*.js'))
+    .pipe(gulp.dest('js/'));
+});
+
+gulp.task('default', ['sass-compile', 'js', 'html', 'serve']);
+" > gulpfile.js
+}
+
+function add_css {
+echo "
+@import 'variables';
+@import 'mixins';
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    letter-spacing: 3px;
+    span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
+}
+" > style.scss
+}
+
+function add_package_json {
+echo '
+{
+  "name": "your_app",
+  "version": "1.0.0",
+  "description": "Your description goes here!",
+  "main": "you_js_file_here.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Your name goes here!",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-live-server": "^0.0.29",
+    "gulp-sass": "^2.1.1",
+    "gulp-watch": "^4.3.5"
+  }
+}
+' > package.json
+}
+
+function download_skeleton {
+  mkdir vendor && cd vendor
+
+  curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o skeleton.css
+
+  curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o normalize.css
+}
+
+function add_js {
+  touch js/main.js
+}
 #Sofia's Version
 if [ "$1" == "--version" ] || [ "$1" == "-v" ]; then
   echo 'version 0.2.6'
   exit
 fi
 
-#Sofia's help module
+#Sofia's help
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
   help
 fi
 
 #Sofia's Update Module
-if [ "$1" == "--update" ]; then
+if [ "$1" == "--update" ] || [ "$1" == "-u" ]; then
   echo "Updating!"
   cd
   sudo rm -rf ~/.sofia
@@ -40,9 +196,16 @@ if [ "$1" == "run" ]; then
   if [ ! -f gulpfile.js ]; then
     python -m SimpleHTTPServer
   else
-    cp -R assets build
     gulp
   fi
+fi
+
+if [ "$1" == "compile" ]; then
+  mkdir build
+  cp -R assets build
+  cp *.html build
+  cp -R css build
+  cp -R js build
 fi
 
 if [ "$1" == "slim" ]; then
@@ -53,19 +216,9 @@ if [ "$1" == "slim" ]; then
 
   touch index.html
 
-  cd css
+  touch css/style.css
 
-  touch style.css
-
-  mkdir vendor
-
-  cd ..
-
-  cd js
-
-  touch main.js
-
-  cd ..
+  touch js/main.js
 
   Echo 'Sofia slim version is done'
 
@@ -73,186 +226,46 @@ if [ "$1" == "slim" ]; then
 
 fi
 
-if [ "$1" == "g" ]; then
-
-  if [ "$2" == "view" ]; then
-    if [  ! -d views ]; then
-      mkdir views && cd views
-      curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o $3.html
-    else
-      cd views
-      curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o $3.html
-    fi
-    cd ..
-    exit
-  fi
-
-  if [ "$2" == "style" ]; then
-    touch css/$3.scss
-    exit
-  fi
-fi
-
-#Install bower dependencies
-function install_bower {
-  bower install skeleton-css
-}
-
-#Template for angular apps
-function angular_template {
-
-  cd js
-
-  if [ "$1" == "angular" ]; then
-
-    cd ..
-
-    rm package.json
-    rm gulpfile.js
-
-    curl hhttps://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/e7f39e3470a8e65256e1db8f9f3eddc083699e28/package.json -o package.json
-
-    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/ab46107625611b8512f8ca51b0ef7157da3f25de/gulpfile.js -o gulpfile.js
-
-    cd js
-
-    mkdir controllers routes directives
-
-    curl https://gist.githubusercontent.com/oelizondo/a19a267a1846cc3739af/raw/9d38633d188f3fc18080bdb9ef096e21e8060284/app.js -o app.js
-
-    cd ..
-
-    mkdir views
-
-    rm index.html
-
-    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/9437b0a2956695bb608e377a17e9968d4739d533/index.html -o index.html
-
-  elif [ "$1" == "backbone" ]; then
-
-    cd ..
-
-    rm package.json
-    rm gulpfile.js
-
-    curl https://gist.githubusercontent.com/oelizondo/768d3367f4eb253b0522/raw/e7f39e3470a8e65256e1db8f9f3eddc083699e28/package.json -o package.json
-
-    curl https://gist.githubusercontent.com/oelizondo/f51df1467385f25b6acf/raw/ab46107625611b8512f8ca51b0ef7157da3f25de/gulpfile.js -o gulpfile.js
-
-    cd js
-
-    mkdir models routes views helpers templates vendor
-
-    curl https://gist.githubusercontent.com/oelizondo/353ddfe711cd26c52930/raw/09ed1510ab5fa5304bace1e828ac48d414292e3b/backbone.js -o app.js
-
-    cd ..
-
-    rm index.html
-
-    curl https://gist.githubusercontent.com/oelizondo/109e602537d6565d9e38/raw/2d74179f34b1fb5a3ea299dca535113b86b470c2/backbone.html -o index.html
-  elif [ "$1" == "react" ]; then
-    echo "coming soon"
-  else
-
-    curl https://gist.githubusercontent.com/oelizondo/da75a61ab577e37b6241/raw/f1552e41ade0b506dc38180fb44e5d81a86f7ef1/main.js -o main.js
-
-    cd ..
-
-  fi
-
-}
-
 #Starts a new Sofia Project
 if [ "$1" == "new" ]; then
 
-  echo 'Welcome to Sofia'
+  if [ "$3" == "--landing" ]; then
+    git clone https://github.com/oelizondo/sofia_template_1.git
+    cp -R sofia_template_1 $2
+    rm -rf sofia_template_1
+    exit
+  fi
 
-  bower=$(which bower)
-
-  node=$(which node)
-
-  nodejs=$(which nodejs)
-
-  if [ ! -z $nodejs ] || [ ! -z $node ]; then
-
-    if [ "$3" == "landing" ]; then
-      git clone https://github.com/oelizondo/sofia_template_1.git
-      cp -R sofia_template_1 $2
-      rm -rf sofia_template_1
-      exit
-    fi
-
-    mkdir $2 && cd $2
-
-    echo 'Adding gitignore...'
-
-    curl https://gist.githubusercontent.com/oelizondo/792469a52dae550750d5/raw/02ac633dc32632bfc18ea5e2dbe263cee1585f77/.gitignore -o .gitignore
-
-    if [ -z $bower ]; then
-      echo 'Do you want Sofia to install bower?(y/n)'
-      read answertwo
-      if [ "$answertwo" == 'y' ]; then
-        echo 'Installing bower'
-        sudo npm install --g bower
-      fi
-    fi
+  mkdir $2 && cd $2
 
   # Starts project scaffold
   echo "Creating $2..."
-
-    curl https://gist.githubusercontent.com/oelizondo/d8b7bbb34739d40197f0/raw/5b4a174e8b6d0813fbc858ab1a98e7296790b5e8/index.html -o index.html
-
-    curl https://gist.githubusercontent.com/oelizondo/9be6afa3925bb32c24b8/raw/83d7c502a3d6012d0ddf260cf95e8bedce8a4c7a/gulpfile.js -o gulpfile.js
-
-    mkdir assets js css
-
-    cd assets
-
-    mkdir images fonts videos
-
-    cd ..
-
-    cd css
-
-    curl https://gist.githubusercontent.com/oelizondo/3ea02d6ee423fdb24e69/raw/c347f3c1cf11bac20e2abbb155d67fe76da8b6cd/style.scss -o style.scss
-
-    touch _variables.scss
-
-    touch _mixins.scss
-
-    mkdir vendor && cd vendor
-
-    curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o skeleton.css
-
-    curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o normalize.css
-
-    cd ..
-    cd ..
-
-    curl https://gist.githubusercontent.com/oelizondo/15c32cc0ab5d1c981dbf/raw/0bf9a431e078b8f9666bc08dbf5553317bcef044/package_std.json -o package.json
-
-    angular_template $3
-
-    echo "Installing gulp and node dependencies, this might take a while..."
-
-    sudo npm install
-
-    git init
-
-    git add -A
-
-    git commit -m "Initial commit, installs dependencies"
-
-    git checkout -b dev
-
-    echo 'Initial push is pending.'
-    echo 'Sofia is done! Cd into your project and run gulp to start working! <3'
-
-  else
-    echo 'Node is not here, go ahead and install it to use Sofia.'
-    echo 'Bye <3'
+  add_gitignore
+  add_html
+  add_gulpfile
+  mkdir assets js css
+  cd assets
+  mkdir images fonts videos
+  cd ..
+  add_js
+  cd css
+  add_css
+  touch _variables.scss _mixins.scss
+  if [ "$3" != "--ns" ]; then
+    download_skeleton
   fi
+  cd ..
+  cd ..
 
+  add_package_json
+
+  git init
+  git add -A
+  git commit -m "Initial commit, installs dependencies"
+  git checkout -b dev
+
+  echo 'Initial push is pending.'
+  echo 'Sofia is done! Cd into your project and run gulp to start working!'
 else
   help
 fi

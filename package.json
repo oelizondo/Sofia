@@ -1,0 +1,19 @@
+
+{
+  "name": "your_app",
+  "version": "1.0.0",
+  "description": "Your description goes here!",
+  "main": "you_js_file_here.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Your name goes here!",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-live-server": "^0.0.29",
+    "gulp-sass": "^2.1.1",
+    "gulp-watch": "^4.3.5"
+  }
+}
+

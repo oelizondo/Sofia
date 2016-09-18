@@ -9,6 +9,59 @@ function help {
   exit
 }
 
+function run_boiler_plate {
+  echo "Creating $1"
+  mkdir $1 && cd $1
+  mkdir js css assets
+  touch css/styles.css js/index.js
+}
+
+function default_html_boilerplate {
+  echo "<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='UTF-8'>
+    <title>Title</title>
+  </head>
+  <body>
+    
+  </body>
+</html>" > index.html  
+}
+
+function create_default {
+  node=$(which node)
+  run_boiler_plate $1
+  touch css/style.scss
+  if [ ! -z $node ]; then
+    npm init -y
+  else
+    echo "Install node"
+    exit
+  fi
+}
+
+function create_slim {
+
+  run_boiler_plate $1
+
+  echo "Created folders"
+
+  echo "<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset='UTF-8'>
+    <title>Title</title>
+  </head>
+  <body>
+    
+  </body>
+</html>" >> index.html
+
+  echo "$1 ready."
+  exit
+}
+
 #Sofia's Version
 if [ "$1" == "--version" ] || [ "$1" == "-v" ]; then
   echo 'version 0.2.6'
@@ -20,46 +73,16 @@ if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
   help
 fi
 
-#Sofia's Update Module
-if [ "$1" == "--update" ]; then
-  echo "Updating!"
-  cd
-  sudo rm -rf ~/.sofia
-  curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
-  exit
-fi
-
 if [ "$1" == "slim" ]; then
-
-  echo "Creating $2"
-  mkdir $2 && cd $2
-
-  echo "Created folders"
-  mkdir js css assets
-
-  touch css/styles.css js/main.js
-
-  echo "<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset='UTF-8'>
-    <title>Sofia</title>
-  </head>
-  <body>
-    
-  </body>
-</html>" >> index.html
-
-  echo "$2 is done"
-  exit
+  create_slim $2
 fi
 
-if [ "$1" == "compile" ]; then
-  mkdir www
-  mkdir www/css www/js
-  cp css/*.css www/css
-  cp js/*.js www/js
-  cp index.html www
-  cp -R assets www
+if [ "$1" == "create" ]; then
+  create_default $2
 fi
+
+if [ "$1" == "run" ]; then
+  echo "run!"
+fi
+
 
