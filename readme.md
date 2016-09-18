@@ -28,7 +28,7 @@ And that's it! Sofia will take it from there.
 Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run.
 
 ##### Running Sofia
-Sofia starts a mini server and moves into your deployment directory (Build). We move  your assets directory into build and start a server from there. Don't worry, any changes you make to your app will reflect with gulp.
+This command will compile your sass and keep track of your ```js``` and ```html``` files.
 
 ```console
 sofia run
@@ -38,14 +38,14 @@ sofia run
 To check Sofia's version, type:
 
 ```console
-sofia version
+sofia --version
 ```
 
 #### Checking Sofia's Help Module
 For help, type:
 
 ```console
-sofia help
+sofia --help
 ```
 
 #### Updating Sofia
@@ -53,18 +53,6 @@ To download the latest version of Sofia:
 
 ```console
 sofia update
-```
-
-#### Generators
-Sofia has two generators to extend your app:
-
-```console
-sofia g view myView
-```
-and
-
-```console
-sofia g style myStyle
 ```
 
 #### Slim
@@ -75,20 +63,9 @@ Sofia has a very minimalistic generator that only creates the necessary files fo
 sofia slim myProject
 ```
 
-### Angular and Backbone
-
-If you pass ```angular``` or ```backbone``` as the second parameter, Sofia creates the necessary folders and installs them via CDN. If you don't like this approach, no worries, Bower comes with Sofia, so locally installing Angular or Backbone is easy.
-
-```console
-sofia new myProject <angular / backbone>
- ```
-
 ### Templates
 
 In version 0.2.0, passing ```landing``` as a second parameter builds a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
-
-### CDNs
-Sofia makes your app fast by adding jQuery and Angular CDNs to your app. We thought a lot about this, and we came to the conclusion that a CDN saves your app from bloat and unnecessary weight.
 
 ### Gulp
 The designated task runner for Sofia is [Gulp](http://gulpjs.com/). It's amazingly easy to set up and will get you started in a fly.
@@ -96,7 +73,6 @@ The designated task runner for Sofia is [Gulp](http://gulpjs.com/). It's amazing
 Packages that come with Sofia:
 
 * gulp-sass
-* gulp-plumber
 * gulp-watch
 * gulp-live-server
 
@@ -118,11 +94,7 @@ some profile settings and require a terminal session restart.
 
 1. A new ```gulpfile.js``` file was included to have a local server for development run by gulp.
 
-### About Babel and Javascript
-
-While we understand the ES6 is becoming an industry standard, we noticed it made the dependencies of a Sofia project heavier and harder to configure. That's why we decided to move the ES6 packages to only Angular and Backbone applications, where we think it'll be more useful. Now, the ```sofia new myProject``` command will come with regular Javascript, considering this is a static website generator.
-
-###Next Version
+### Next Version
 
 The next version of Sofía will include the current version of [Andrea](https://github.com/oelizondo/Andrea), a font-end framework I created for rapid development.
 
