@@ -6,6 +6,10 @@ function help {
   echo "For creating a new project: sofia new <project_name>"
   echo "For creating a new slim project: sofia slim <project_name>"
   echo "For version: sofia --version or sofia -v"
+  echo "For update: sofia --update or sofia -u"
+  echo "For help: sofia --help or sofia -help"
+  echo "To run: sofia run"
+  echo "To compile: sofia compile"
   echo "Installed packages: "
   echo "Skeleton"
   echo "Normalize"
@@ -52,8 +56,7 @@ node_modules
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
-" > .gitignore
+Thumbs.db" > .gitignore
 }
 
 function add_html {
@@ -75,8 +78,7 @@ function add_html {
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
         <script src='js/main.js'></script>
     </body>
-</html>
-" > index.html
+</html>" > index.html
 }
 
 function add_gulpfile {
@@ -101,7 +103,7 @@ gulp.task('sass-compile', function(){
 gulp.task('html', function(){
     gulp.src('./*.html')
     .pipe(watch('./*.html'))
-    .pipe(gulp.dest('/'));
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('js', function(){
@@ -110,8 +112,7 @@ gulp.task('js', function(){
     .pipe(gulp.dest('js/'));
 });
 
-gulp.task('default', ['sass-compile', 'js', 'html', 'serve']);
-" > gulpfile.js
+gulp.task('default', ['sass-compile', 'js', 'html', 'serve']);" > gulpfile.js
 }
 
 function add_css {
@@ -135,8 +136,7 @@ body {
     font-weight: 100;
     letter-spacing: 3px;
     span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
-}
-" > style.scss
+}" > style.scss
 }
 
 function add_package_json {
@@ -157,8 +157,7 @@ echo '
     "gulp-sass": "^2.1.1",
     "gulp-watch": "^4.3.5"
   }
-}
-' > package.json
+}' > package.json
 }
 
 function download_skeleton {
@@ -198,14 +197,16 @@ if [ "$1" == "run" ]; then
   else
     gulp
   fi
+  exit
 fi
 
 if [ "$1" == "compile" ]; then
   mkdir build
   cp -R assets build
   cp *.html build
-  cp -R css build
+  cp -R css/*.css build
   cp -R js build
+  exit
 fi
 
 if [ "$1" == "slim" ]; then
@@ -223,7 +224,6 @@ if [ "$1" == "slim" ]; then
   Echo 'Sofia slim version is done'
 
   exit
-
 fi
 
 #Starts a new Sofia Project
