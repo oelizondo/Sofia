@@ -63,21 +63,20 @@ function add_html {
   echo "
 <!DOCTYPE html>
 <html lang='en'>
-<head>
+  <head>
     <meta charset='UTF-8'>
     <title>Sofia</title>
     <meta name='viewport' content='initial-scale=1, maximum-scale=1'>
-    <link rel='stylesheet' href='css/style.css'>
     <link rel='stylesheet' href='css/vendor/skeleton.css'>
-    <link rel='stylesheet' href='css/vendor/normalize.css'>
+    <link rel='stylesheet' href='css/style.css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
-</head>
-    <body>
-        <h1 class='title'>Love, <br> <span>Sofia</span>.</h1>
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
-        <script src='js/main.js'></script>
-    </body>
+  </head>
+  <body>
+      <h1 class='title'>Love, <br> <span>Sofia</span>.</h1>
+      <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+      <script src='js/main.js'></script>
+  </body>
 </html>" > index.html
 }
 
@@ -100,19 +99,13 @@ gulp.task('sass-compile', function(){
     .pipe(gulp.dest('css/'));
 });
 
-gulp.task('html', function(){
-    gulp.src('./*.html')
-    .pipe(watch('./*.html'))
-    .pipe(gulp.dest('./'));
-});
-
 gulp.task('js', function(){
     gulp.src('js/**/*.js')
     .pipe(watch('js/**/*.js'))
     .pipe(gulp.dest('js/'));
 });
 
-gulp.task('default', ['sass-compile', 'js', 'html', 'serve']);" > gulpfile.js
+gulp.task('default', ['sass-compile', 'js', 'serve']);" > gulpfile.js
 }
 
 function add_css {
@@ -121,21 +114,21 @@ echo "
 @import 'mixins';
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    font-weight: 100;
-    letter-spacing: 3px;
-    span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
 }" > style.scss
 }
 
@@ -146,9 +139,7 @@ echo '
   "version": "1.0.0",
   "description": "Your description goes here!",
   "main": "you_js_file_here.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "author": "Your name goes here!",
   "license": "ISC",
   "devDependencies": {
@@ -162,10 +153,7 @@ echo '
 
 function download_skeleton {
   mkdir vendor && cd vendor
-
   curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o skeleton.css
-
-  curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o normalize.css
 }
 
 function add_js {
@@ -204,8 +192,8 @@ if [ "$1" == "compile" ]; then
   mkdir build
   cp -R assets build
   cp *.html build
-  cp -R css/*.css build
-  cp -R js build
+  cp -R css/*.css build/css
+  cp -R js build/js
   exit
 fi
 
@@ -215,11 +203,7 @@ if [ "$1" == "slim" ]; then
 
   mkdir js css
 
-  touch index.html
-
-  touch css/style.css
-
-  touch js/main.js
+  touch index.html css/style.css js/main.js
 
   Echo 'Sofia slim version is done'
 
