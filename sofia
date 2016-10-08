@@ -87,6 +87,11 @@ var gulp    = require('gulp'),
     gls     = require('gulp-live-server'),
     watch   = require('gulp-watch');
 
+function reportError()
+{
+  console.log('Hey! You have an error in your Sass file, go check it out!')
+}
+
 gulp.task('serve', function(){
     var server = gls.static('/', 8080);
     server.start();
@@ -95,17 +100,12 @@ gulp.task('serve', function(){
 gulp.task('sass-compile', function(){
     gulp.src('css/**.scss')
     .pipe(watch('css/**.scss'))
-    .pipe(sass())
+    .pipe(sass().on('error', reportError))
     .pipe(gulp.dest('css/'));
 });
 
-gulp.task('js', function(){
-    gulp.src('js/**/*.js')
-    .pipe(watch('js/**/*.js'))
-    .pipe(gulp.dest('js/'));
-});
-
-gulp.task('default', ['sass-compile', 'js', 'serve']);" > gulpfile.js
+gulp.task('default', ['sass-compile', 'serve']);
+" > gulpfile.js
 }
 
 function add_css {
