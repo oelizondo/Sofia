@@ -9,7 +9,6 @@ function help {
   echo "Installed packages: "
   echo "Skeleton"
   echo "Normalize"
-  echo "Gulp"
   exit
 }
 
@@ -61,57 +60,22 @@ function add_html {
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-    <meta charset='UTF-8'>
-    <title>Sofia</title>
-    <meta name='viewport' content='initial-scale=1, maximum-scale=1'>
-    <link rel='stylesheet' href='css/style.css'>
-    <link rel='stylesheet' href='css/vendor/skeleton.css'>
-    <link rel='stylesheet' href='css/vendor/normalize.css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+  <meta charset='UTF-8'>
+  <title>Sofia</title>
+  <meta name='viewport' content='initial-scale=1, maximum-scale=1'>
+  <link rel='stylesheet' href='css/style.css'>
+  <link rel='stylesheet' href='css/vendor/skeleton.css'>
+  <link rel='stylesheet' href='css/vendor/normalize.css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
 </head>
-    <body>
-        <h1 class='title'>Love, <br> <span>Sofia</span>.</h1>
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
-        <script src='js/main.js'></script>
-    </body>
+  <body>
+    <h1 class='title'>Love, <br> <span>Sofia</span>.</h1>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script src='js/main.js'></script>
+  </body>
 </html>
 " > index.html
-}
-
-function add_gulpfile {
-echo "
-var gulp    = require('gulp'),
-    sass    = require('gulp-sass'),
-    gls     = require('gulp-live-server'),
-    watch   = require('gulp-watch');
-
-gulp.task('serve', function(){
-    var server = gls.static('/', 8080);
-    server.start();
-});
-
-gulp.task('sass-compile', function(){
-    gulp.src('css/**.scss')
-    .pipe(watch('css/**.scss'))
-    .pipe(sass())
-    .pipe(gulp.dest('css/'));
-});
-
-gulp.task('html', function(){
-    gulp.src('./*.html')
-    .pipe(watch('./*.html'))
-    .pipe(gulp.dest('/'));
-});
-
-gulp.task('js', function(){
-    gulp.src('js/**/*.js')
-    .pipe(watch('js/**/*.js'))
-    .pipe(gulp.dest('js/'));
-});
-
-gulp.task('default', ['sass-compile', 'js', 'html', 'serve']);
-" > gulpfile.js
 }
 
 function add_css {
@@ -120,61 +84,62 @@ echo "
 @import 'mixins';
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    font-weight: 100;
-    letter-spacing: 3px;
-    span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
 }
 " > style.scss
 }
 
 function add_package_json {
-echo '
-{
-  "name": "your_app",
-  "version": "1.0.0",
-  "description": "Your description goes here!",
-  "main": "you_js_file_here.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+echo "{
+  \"name\": \"$1\",
+  \"version\": \"1.0.0\",
+  \"description\": \"Your description goes here!\",
+  \"main\": \"main.js\",
+  \"scripts\": {
+    \"scss\": \"node-sass --output-style compressed -o css/ css/\",
+    \"server\": \"broswer-sync --server --files css/*.css js/*.js assets/*.*\",
+    \"watch\": \"onchange 'css/*.scss' -- npm run scss \",
+    \"sofia\": \"parallelshell 'npm run server' 'npm run watch' \"
+
   },
-  "author": "Your name goes here!",
-  "license": "ISC",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-live-server": "^0.0.29",
-    "gulp-sass": "^2.1.1",
-    "gulp-watch": "^4.3.5"
+  \"author\": \"Your name goes here!\",
+  \"license\": \"ISC\",
+  \"devDependencies\": {
+    \"node-sass\": \"^3.10.1\",
+    \"onchange\": \"^3.0.2\",
+    \"parallelshell\": \"^2.0.0\"
   }
 }
-' > package.json
+" > package.json
 }
 
 function download_skeleton {
   mkdir vendor && cd vendor
-
   curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o skeleton.css
-
   curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o normalize.css
 }
 
 function add_js {
   touch js/main.js
 }
+
 #Sofia's Version
 if [ "$1" == "--version" ] || [ "$1" == "-v" ]; then
-  echo 'version 0.2.6'
+  echo 'version 0.3.0'
   exit
 fi
 
@@ -196,7 +161,7 @@ if [ "$1" == "run" ]; then
   if [ ! -f gulpfile.js ]; then
     python -m SimpleHTTPServer
   else
-    gulp
+    npm run sofia
   fi
 fi
 
@@ -236,10 +201,9 @@ if [ "$1" == "new" ]; then
     exit
   fi
 
-  mkdir $2 && cd $2
-
   # Starts project scaffold
   echo "Creating $2..."
+  mkdir $2 && cd $2
   add_gitignore
   add_html
   add_gulpfile
@@ -251,21 +215,18 @@ if [ "$1" == "new" ]; then
   cd css
   add_css
   touch _variables.scss _mixins.scss
-  if [ "$3" != "--ns" ]; then
-    download_skeleton
-  fi
+  download_skeleton
   cd ..
   cd ..
 
-  add_package_json
+  add_package_json $2
 
   git init
   git add -A
   git commit -m "Initial commit, installs dependencies"
   git checkout -b dev
 
-  echo 'Initial push is pending.'
-  echo 'Sofia is done! Cd into your project and run gulp to start working!'
+  echo 'Sofia is done! Cd into $1 to start working'
 else
   help
 fi
