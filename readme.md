@@ -25,7 +25,7 @@ And that's it! Sofia will take it from there.
 
 ##### Package.json
 
-Sofia installs a ```package.json``` file to know which dependencies you're using. Sofía comes with ```gulp``` and a few of it's plug-ins to run.
+Sofia installs a ```package.json``` file to know which dependencies you're using.
 
 ##### Running Sofia
 This command will compile your sass and keep track of your ```js``` and ```html``` files.
@@ -67,21 +67,6 @@ sofia slim myProject
 
 In version 0.2.0, passing ```landing``` as a second parameter builds a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
 
-### Gulp
-The designated task runner for Sofia is [Gulp](http://gulpjs.com/). It's amazingly easy to set up and will get you started in a fly.
-
-Packages that come with Sofia:
-
-* gulp-sass
-* gulp-watch
-* gulp-live-server
-
-To install more gulp or npm packages, run:
-
-```console
-npm install --save-dev gulp-<package>
-```
-
 ### Version Control
 Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everything is in place before making an important push from master.
 
@@ -90,18 +75,16 @@ Sofia uses an agile approach when it comes to versioning your software. When usi
 Restart your terminal after installing Sofia. The installation changes
 some profile settings and require a terminal session restart.
 
-### Update for version 0.2.4
-
-1. A new ```gulpfile.js``` file was included to have a local server for development run by gulp.
+### Update for version 0.3.0
+We now use npm scripts in order to serve, watch, compile, minimize, compress, and build your files. Why? Because Gulp was too much of a hassle, and we decided to go for something more modern and minimalistic.
 
 ### Next Version
-
 The next version of Sofía will include the current version of [Andrea](https://github.com/oelizondo/Andrea), a font-end framework I created for rapid development.
 
 ### Version
 Sofia is currently in version:
 
-* 0.2.6
+* 0.3.0
 
 To work with other versions of Sofia simply checkout the branch with the corresponding version number
 
