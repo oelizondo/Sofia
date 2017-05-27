@@ -3,6 +3,7 @@
 The perfect project scaffolder for your amazing projects. Sofia creates an agnostic static site structure that let's you start developing right away. Forget about the tedious setup!
 
 ### Installation
+
 Make sure you have Git installed.
 To use Sofia, you must have Node.js installed. If you do, then you don't have to worry about a thing. If you don't, go ahead and install it.
 
@@ -15,6 +16,7 @@ curl -L https://raw.githubusercontent.com/oelizondo/Sofia/master/install.sh | sh
 ### How to use
 
 ##### Startup
+
 To start a new project, just type:
 
 ```console
@@ -28,7 +30,6 @@ And that's it! Sofia will take it from there.
 Sofia installs a ```package.json``` file to know which dependencies you're using.
 
 ##### Running Sofia
-This command will compile your sass and keep track of your ```js``` and ```html``` files.
 
 ```console
 sofia run
@@ -63,32 +64,24 @@ Sofia has a very minimalistic generator that only creates the necessary files fo
 sofia slim myProject
 ```
 
-### Templates
-
-In version 0.2.0, passing ```landing``` as a second parameter builds a whole landing page for you, including some styles that are recommended for landing websites. In the future, we hope to bring you different templates.
-
-### Version Control
-Sofia uses an agile approach when it comes to versioning your software. When using Sofia for a new project, we create an initial branch and then change to a Dev branch. We do this with the purpose of validating and making sure everything is in place before making an important push from master.
-
 ### Remember to
 
 Restart your terminal after installing Sofia. The installation changes
 some profile settings and require a terminal session restart.
 
-### Update for version 0.3.0
-We now use npm scripts in order to serve, watch, compile, minimize, compress, and build your files. Why? Because Gulp was too much of a hassle, and we decided to go for something more modern and minimalistic.
+### Update for version 0.3.1
 
-### Next Version
-The next version of Sofía will include the current version of [Andrea](https://github.com/oelizondo/Andrea), a font-end framework I created for rapid development.
+* Fixed npm-scripts
+* Removed git
 
 ### Version
+
 Sofia is currently in version:
 
-* 0.3.0
-
-To work with other versions of Sofia simply checkout the branch with the corresponding version number
+* 0.3.1
 
 ## Contributing
+
 1. Fork!
 2. Make your changes!
 3. Pull request!

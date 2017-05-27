@@ -28,10 +28,9 @@ function add_html {
 echo "<head>
   <meta charset='UTF-8'>
   <title>Sofia</title>
-  <meta name='viewport' content='initial-scale=1, maximum-scale=1'>
-  <link rel='stylesheet' href='css/style.css'>
-  <link rel='stylesheet' href='css/vendor/skeleton.css'>
   <link rel='stylesheet' href='css/vendor/normalize.css'>
+  <link rel='stylesheet' href='css/vendor/skeleton.css'>
+  <link rel='stylesheet' href='css/style.css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
 </head>
@@ -44,6 +43,7 @@ echo "<head>
 }
 
 function add_css {
+  touch css/_variables.scss css/_mixins.scss
 echo "@import 'variables';
 @import 'mixins';
 
@@ -63,7 +63,7 @@ body {
   font-weight: 100;
   letter-spacing: 3px;
   span { font-family: 'Tangerine', cursive; font-size: 40px; margin-left: 20px; }
-}" > style.scss
+}" > css/style.scss
 }
 
 function add_package_json {
@@ -73,8 +73,8 @@ echo "{
   \"description\": \"Your description goes here!\",
   \"main\": \"main.js\",
   \"scripts\": {
-    \"scss\": \"node-sass --output-style compressed -o css/ css/\",
-    \"server\": \"browser-sync start --server --files css/*.css js/*.js assets/*.*\",
+    \"scss\": \"node-sass --output-style compressed -o css/ css/style.scss\",
+    \"server\": \"browser-sync start --server --files *.html css/*.css js/*.js assets/*.*\",
     \"watch\": \"onchange 'css/*.scss' -- npm run scss \",
     \"sofia\": \"parallelshell 'npm run server' 'npm run watch' \"
 
@@ -91,9 +91,9 @@ echo "{
 }
 
 function download_skeleton {
-  mkdir vendor && cd vendor
-  curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o skeleton.css
-  curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o normalize.css
+  mkdir -p css/vendor
+  curl https://gist.githubusercontent.com/oelizondo/c32a89f50dabd2520467/raw/78f3b4eb1a7c18db3459d25709a649a3a2d0001f/skeleton.css -o css/vendor/skeleton.css
+  curl https://gist.githubusercontent.com/oelizondo/6fec4422313ad1ff49b1/raw/ca54d61066613a029970a5fc21b59c222e2cd2b3/normalize.css -o css/vendor/normalize.css
 }
 
 function add_js {
@@ -102,7 +102,7 @@ function add_js {
 
 #Sofia's Version
 if [ "$1" == "--version" ] || [ "$1" == "-v" ]; then
-  echo 'version 0.3.0'
+  echo 'version 0.3.1'
   exit
 fi
 
@@ -151,39 +151,20 @@ fi
 #Starts a new Sofia Project
 if [ "$1" == "new" ]; then
 
-  if [ "$3" == "--landing" ]; then
-    git clone https://github.com/oelizondo/sofia_template_1.git
-    cp -R sofia_template_1 $2
-    rm -rf sofia_template_1
-    exit
-  fi
-
   # Starts project scaffold
   echo "Creating $2..."
   mkdir $2 && cd $2
   add_gitignore
   add_html
-  add_gulpfile
   mkdir assets js css
-  cd assets
-  mkdir images fonts videos
-  cd ..
+  mkdir -p assets/images assets/videos assets/fonts
   add_js
-  cd css
   add_css
-  touch _variables.scss _mixins.scss
-  download_skeleton
-  cd ..
-  cd ..
-
+  if [ "$3" == "--skeleton" ] || [ "$3" == "-s" ]; then
+    download_skeleton
+  fi
   add_package_json $2
-
-  git init
-  git add -A
-  git commit -m "Initial commit, installs dependencies"
-  git checkout -b dev
-
-  echo "Sofia is done! Cd into $1 to start working"
+  echo "Sofia is done! cd into $1 to start working."
 else
   help
   exit
