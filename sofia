@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
 
 function help {
-  echo "% Sofia %"
-  echo "For creating a new project: sofia new <project_name>"
-  echo "For creating a new slim project: sofia slim <project_name>"
-  echo "For version: sofia --version or sofia -v"
-  echo "For update: sofia --update or sofia -u"
-  echo "For help: sofia --help or sofia -help"
-  echo "To run: sofia run"
-  echo "To compile: sofia compile"
+  echo "Usage sofia new <project_name>, sofa -v, sofia -h, sofia run, sofia compile, sofia slim <project_name>"
   exit
 }
 
