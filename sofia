@@ -29,7 +29,6 @@ echo "<head>
 </head>
   <body>
     <h1 class='title'>Love, <br> <span>Sofia</span>.</h1>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
     <script src='js/main.js'></script>
   </body>
 </html>" > index.html
@@ -70,14 +69,13 @@ echo "{
     \"server\": \"browser-sync start --server --files *.html css/*.css js/*.js assets/*.*\",
     \"watch\": \"onchange 'css/*.scss' -- npm run scss \",
     \"sofia\": \"parallelshell 'npm run server' 'npm run watch' \"
-
   },
   \"author\": \"Your name goes here!\",
   \"license\": \"ISC\",
   \"devDependencies\": {
-    \"node-sass\": \"^3.10.1\",
-    \"onchange\": \"^3.0.2\",
-    \"parallelshell\": \"^2.0.0\",
+    \"node-sass\": \"latest\",
+    \"onchange\": \"latest\",
+    \"parallelshell\": \"latest\",
     \"browser-sync\": \"latest\"
   }
 }" > package.json
